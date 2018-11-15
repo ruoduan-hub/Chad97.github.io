@@ -207,6 +207,7 @@ var themeMenus = {};
 <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><blockquote>
 <p>不难看出，这里的关键点就在于  return {} 这个地方 如果是作用域外传入对象的话，上面三个组件的click方法都是处理的这个外部对象里面的count，所以他们作用于同样一个变量，但是如果是 return {count : 0}的话是写在template 内部的，所以每当你在page上渲染一个组件就会响应的创建一个count ，所以他们互不干预，在事件使用中我们可以根据这个小小的点实现不同需求的功能而省去多余的代码</p>
 </blockquote>
+<p><img src="/2018/11/15/VUE-why-components-data-must-be-a-function/3.png" alt="改正后"></p>
 
       
     </div>
