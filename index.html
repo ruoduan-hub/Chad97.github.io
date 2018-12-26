@@ -168,6 +168,130 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-npm-常用命令及切换源" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/12/26/npm-常用命令及切换源/">npm-常用命令及切换源</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/12/26/npm-常用命令及切换源/" class="article-date">
+	  <time datetime="2018-12-26T14:58:41.000Z" itemprop="datePublished">十二月 26, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><ul>
+<li>node package manager——网站 npmjs.com</li>
+</ul>
+<hr>
+<ul>
+<li><p>只要安装了node 就安装了 npm</p>
+</li>
+<li><p>nm也有版本概念</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm --version <span class="comment">//查看版本号</span></span><br><span class="line"></span><br><span class="line">npm install --global npm <span class="comment">//升级npm版本</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="一些常用命令"><a href="#一些常用命令" class="headerlink" title="一些常用命令"></a>一些常用命令</h3><ul>
+<li>npm init  //生成package.json 文件<ul>
+<li>npm init -y //快速生成 跳过向导</li>
+</ul>
+</li>
+<li>npm install 包名      //下载</li>
+<li>npm install     //一次性把package.json  中的dependencies 依赖项全部安装<ul>
+<li>npm install –save //下载并保持依赖项目到package.json  中的dependencies</li>
+<li>简写 npm i -S包名</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>npm uninstall 包名      //只删除 如果有依赖项 依然保存</li>
+<li>npm uninstall  –save    //删除 同时也会把依赖信息也删除<ul>
+<li>简写 npm un -S 包名</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>npm –help     //查看使用帮助<ul>
+<li>npm  命令  –help   //查看具体使用帮助</li>
+<li>例如 npm uninstall   –help</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]... [--save-prod|--save-dev|--save-optional] [--no-save]</span><br><span class="line"></span><br><span class="line">aliases: un, unlink, remove, rm, r </span><br><span class="line"><span class="meta">#</span># alias 别名</span><br></pre></td></tr></table></figure>
+<p>具体 命令 请<a href="http://www.cnblogs.com/itlkNote/p/6830682.html" target="_blank" rel="noopener">参考</a></p>
+<h3 id="npm切换源，解决-npm-被墙问题"><a href="#npm切换源，解决-npm-被墙问题" class="headerlink" title="npm切换源，解决 npm 被墙问题"></a>npm切换源，解决 npm 被墙问题</h3><p>当使用官方npm源安装各种包比较慢的时候，建议修改npm源地址</p>
+<p>查看npm源地址，在终端输入以下命令</p>
+<p>npm config list</p>
+<p>会看到官方的npm源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">metrics-registry = &quot;https://registry.npmjs.org/&quot;</span><br></pre></td></tr></table></figure>
+<p>国内常用的镜像地址如淘宝npm：<a href="https://registry.npm.taobao.org/" target="_blank" rel="noopener">https://registry.npm.taobao.org/</a></p>
+<p>修改registry地址很简单，在终端输入</p>
+<p>npm set registry <a href="https://registry.npm.taobao.org/" target="_blank" rel="noopener">https://registry.npm.taobao.org/</a></p>
+<p>如果有一天你肉身FQ到国外，用不上了，用rm命令删掉它</p>
+<p>npm config rm registry</p>
+<p>如果某一天你又被遣送回国了，还是得加上它……</p>
+<p>有些大公司还需要在公司的私有npm源和外部npm源之间来回切换，这样set来rm去不是办法，于是有了<a href="https://github.com/Pana/nrm" target="_blank" rel="noopener">nrm</a></p>
+<p><strong>nrm是专门用来管理和快速切换私人配置的registry</strong></p>
+<p>建议全局安装</p>
+<p>npm install nrm -g –save</p>
+<p>nrm有一些默认配置，用nrm ls命令查看默认配置，带*号即为当前使用的配置</p>
+<p>nrm ls</p>
+<p><img src="/2018/12/26/npm-常用命令及切换源/nrm-ls.png" alt="nrm-ls"></p>
+<p>也可以直接输入以下命令查看当前使用的是哪个源</p>
+<p>nrm current</p>
+<p>切到源<a href="http://r.cnpmjs.org/，命令：nrm" target="_blank" rel="noopener">http://r.cnpmjs.org/，命令：nrm</a> use 源的别名，即</p>
+<p>nrm use cnpm</p>
+<p>执行成功提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Registry has been set to: http://r.cnpmjs.org/</span><br></pre></td></tr></table></figure>
+<p>用nrm add 命令添加公司私有npm源，如<a href="http://registry.npm.360.org(随便写的)，起个别名叫qihoo" target="_blank" rel="noopener">http://registry.npm.360.org(随便写的)，起个别名叫qihoo</a></p>
+<p>nrm add qihoo <a href="http://registry.npm.360.org" target="_blank" rel="noopener">http://registry.npm.360.org</a></p>
+<p>接着查看nrm配置，发现最底部qihoo添加成功</p>
+<p><img src="/2018/12/26/npm-常用命令及切换源/nrm-add.png" alt="nrm-add"></p>
+<p>添加完了可以顺便测试下速度（只能测试已添加的源的别名，直接测试源URL是没有前途的），因为我随便写的地址，就测试一下官方的好了</p>
+<p>nrm test npm</p>
+<p>输出：</p>
+<p>npm —- 1547ms</p>
+<p>是挺慢的。</p>
+<p>最后，如果你被公司开除了，怒删公司npm源配置</p>
+<p>nrm del qihoo</p>
+<p><img src="/2018/12/26/npm-常用命令及切换源/nrm-del.png" alt="nrm-del"></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/《Nodejs》/">《Nodejs》</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nodejs/">Nodejs</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-JavaScript原型，原型链，继承" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -412,7 +536,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Hello-User"><a href="#Hello-User" class="headerlink" title="Hello User"></a>Hello User</h3><p>​    欢迎来到我的播客主页，前端初探者一名，且在前端的路上还是不断的学习和实践，有联系我或者对前端同样感兴趣的朋友，可以点击右边的E-mail，给我来信欢迎一起学习，交流 ！</p>
+        <h3 id="Hello-User"><a href="#Hello-User" class="headerlink" title="Hello User"></a>Hello User</h3><p>​    欢迎来到我的blog主页，前端初探者一名，且在前端的路上在不断的学习和实践，有同样志同道合的朋友，或者发现本人博客有什么地方写的有错误和瑕疵，可以点击右边的E-mail，给我来信，欢迎一起学习，交流 ！</p>
 <p><img src="/2018/11/09/Hello-User/user1.jpg" alt=""></p>
 <ul>
 <li>其实世事并无好坏，全看你们如何去想。(There is nothing either good or bad, but thinking makes it so.)</li>
@@ -564,6 +688,18 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2018/12/26/npm-常用命令及切换源/">npm-常用命令及切换源</a></h6>
+              <span>十二月 26, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2018/11/26/JavaScript原型，原型链，继承/">JavaScript原型，原型链，继承</a></h6>
               <span>十一月 26, 2018</span>
             </div>
@@ -603,7 +739,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/《ECMA-JavaScript》/">《ECMA JavaScript》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《VUE》/">《VUE》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《记》/">《记》</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/《ECMA-JavaScript》/">《ECMA JavaScript》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《Nodejs》/">《Nodejs》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《VUE》/">《VUE》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《记》/">《记》</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -613,7 +749,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMA-JavaScript/">ECMA-JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/">VUE</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMA-JavaScript/">ECMA-JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/">VUE</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -623,7 +759,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ECMA-JavaScript/" style="font-size: 10px;">ECMA-JavaScript</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a>
+      <a href="/tags/ECMA-JavaScript/" style="font-size: 10px;">ECMA-JavaScript</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a>
     </div>
   </div>
 
@@ -633,7 +769,7 @@ var themeMenus = {};
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
