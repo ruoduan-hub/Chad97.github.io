@@ -21,22 +21,23 @@
   
   
   
-  <meta name="description" content="原型原型的作用：1、通过原型来添加方法，解决数据共享，节省内存空间 2、作用于继承，模拟面向对象，来做到继承，多态 构造函数1234function Person(name,age) &amp;#123;      this.name=name;      this.age=age;    &amp;#125;; 通过原型添加方法： 123Person.prototype.eat=function () &amp;#12">
+  <meta name="description" content="原型 原型的作用：1、通过原型来添加方法，解决数据共享，节省内存空间2、作用于继承，模拟面向对象，来做到继承，多态  构造函数   1234function Person(name,age) &amp;#123;      this.name=name;      this.age=age;    &amp;#125;;  通过原型添加方法：  123Person.prototype.eat=function (">
 <meta name="keywords" content="ECMA-JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript原型，原型链，继承">
 <meta property="og:url" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/index.html">
 <meta property="og:site_name" content="Ruoduan&#39;s Blog">
-<meta property="og:description" content="原型原型的作用：1、通过原型来添加方法，解决数据共享，节省内存空间 2、作用于继承，模拟面向对象，来做到继承，多态 构造函数1234function Person(name,age) &amp;#123;      this.name=name;      this.age=age;    &amp;#125;; 通过原型添加方法： 123Person.prototype.eat=function () &amp;#12">
+<meta property="og:description" content="原型 原型的作用：1、通过原型来添加方法，解决数据共享，节省内存空间2、作用于继承，模拟面向对象，来做到继承，多态  构造函数   1234function Person(name,age) &amp;#123;      this.name=name;      this.age=age;    &amp;#125;;  通过原型添加方法：  123Person.prototype.eat=function (">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/0.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/protype1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/protype2.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/protype3.png">
-<meta property="og:updated_time" content="2018-12-26T14:25:26.508Z">
+<meta property="og:updated_time" content="2019-01-12T08:31:10.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript原型，原型链，继承">
-<meta name="twitter:description" content="原型原型的作用：1、通过原型来添加方法，解决数据共享，节省内存空间 2、作用于继承，模拟面向对象，来做到继承，多态 构造函数1234function Person(name,age) &amp;#123;      this.name=name;      this.age=age;    &amp;#125;; 通过原型添加方法： 123Person.prototype.eat=function () &amp;#12">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/protype1.png">
+<meta name="twitter:description" content="原型 原型的作用：1、通过原型来添加方法，解决数据共享，节省内存空间2、作用于继承，模拟面向对象，来做到继承，多态  构造函数   1234function Person(name,age) &amp;#123;      this.name=name;      this.age=age;    &amp;#125;;  通过原型添加方法：  123Person.prototype.eat=function (">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/0.png">
   
     <link rel="alternate" href="/atom.xml" title="Ruoduan&#39;s Blog" type="application/atom+xml">
   
@@ -202,15 +203,35 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a><strong>原型</strong></h2><p>原型的作用：<br>1、通过原型来添加方法，解决数据共享，节省内存空间<br> 2、作用于继承，模拟面向对象，来做到继承，多态</p>
-<p>构造函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.name=name;</span><br><span class="line">      <span class="keyword">this</span>.age=age;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></p>
-<p>通过原型添加方法：</p>
+        <h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a><strong>原型</strong></h2><ul>
+<li><p>原型的作用：<br>1、通过原型来添加方法，解决数据共享，节省内存空间<br>2、作用于继承，模拟面向对象，来做到继承，多态</p>
+</li>
+<li><p>构造函数</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.name=name;</span><br><span class="line">      <span class="keyword">this</span>.age=age;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过原型添加方法：</li>
+</ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.eat=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"吃饭"</span>);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-<p>实例化对象：</p>
+<ul>
+<li>实例化对象：</li>
+</ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> per1=<span class="keyword">new</span> Person(<span class="string">"小明"</span>,<span class="string">"18"</span>);</span><br><span class="line"><span class="keyword">var</span> per2=<span class="keyword">new</span> Person(<span class="string">"小红"</span>,<span class="string">"20"</span>);</span><br></pre></td></tr></table></figure>
-<p>接下来就是我们所要探讨的了，per1和per2的eat的这个方法是不是同一个方法呢？<br>我们来验证一下：</p>
+<ul>
+<li>接下来就是我们所要探讨的了，per1和per2的eat的这个方法是不是同一个方法呢？<br>我们来验证一下：</li>
+</ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(per1.eat==per2.eat);<span class="comment">//true</span></span><br><span class="line">​<span class="string">``</span><span class="string">`js</span></span><br><span class="line"><span class="string">结果是true</span></span><br></pre></td></tr></table></figure>
-<p>我们来查看一下他们的结构<br>console.dir(per1);<br>console.dir(per2);<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">![这里写图片描述](https:<span class="comment">//img-blog.csdn.net/2018091314400322?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoYWQ5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)</span></span><br><span class="line"></span><br><span class="line">结论：我们可以看到在Person结构目录下他们都有age和name属性，同时他们也都有 _ _proto_ _  这个属性，_ _proto_ _ </span><br><span class="line"> 下面我们看到了又eat这个方法了，这样做到了简单的数据共享了，至于后面的<span class="keyword">constructor</span>和_ _proto_ _: Object是有关于</span><br><span class="line"> 原型链和继承；请看下文，我们继续深入</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我们虽然做到了同一个构造函数内共享方法且节省了内存空间，但是这并不是我们的真正目的</span><br><span class="line"></span><br><span class="line">下面我们再来一个构造函数</span><br><span class="line"></span><br><span class="line">​```js</span><br><span class="line">  function Student(name,age,sex) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name=name;</span><br><span class="line">      <span class="keyword">this</span>.age=age;</span><br><span class="line">      <span class="keyword">this</span>.sex=sex;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>我们来查看一下他们的结构<br>console.dir(per1);<br>console.dir(per2);</li>
+</ul>
+<p><img src="/2018/11/26/JavaScript原型，原型链，继承/0.png" alt=""></p>
+<ul>
+<li>结论：我们可以看到在Person结构目录下他们都有age和name属性，同时他们也都有 _ <em>proto</em> _  这个属性，_ <em>proto</em> _<br> 下面我们看到了又eat这个方法了，这样做到了简单的数据共享了，至于后面的constructor和_ <em>proto</em> _: Object是有关于<br> 原型链和继承；请看下文，我们继续深入</li>
+</ul>
+<p>  我们虽然做到了同一个构造函数内共享方法且节省了内存空间，但是这并不是我们的真正目的</p>
+<p>下面我们再来一个构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,sex</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name;</span><br><span class="line">    <span class="keyword">this</span>.age=age;</span><br><span class="line">    <span class="keyword">this</span>.sex=sex;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>为原型添加方法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Student.prototype.study=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"学习"</span>);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
 <p>实例化Student对象</p>
