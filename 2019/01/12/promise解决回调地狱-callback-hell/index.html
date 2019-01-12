@@ -21,19 +21,19 @@
   
   
   
-  <meta name="description" content="promise解决回调地狱（callback hell） 具体参考 阮一峰,ES6标准入门  在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现  回调地狱（callback）的情况 例如：  12345678910111213141516171819202122var fs = require(&apos;fs&apos;)fs.readFile(&apos;../data/a.txt&apos;,&apos;ut">
+  <meta name="description" content="具体参考 阮一峰,ES6标准入门 在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现 回调地狱（callback）的情况 例如：  12345678910111213141516171819202122var fs = require(&apos;fs&apos;)fs.readFile(&apos;../data/a.txt&apos;,&apos;utf8&apos;,function (err,data) &amp;#123;">
 <meta name="keywords" content="ECMA-JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="promise解决回调地狱(callback-hell)">
 <meta property="og:url" content="http://yoursite.com/2019/01/12/promise解决回调地狱-callback-hell/index.html">
 <meta property="og:site_name" content="Ruoduan&#39;s Blog">
-<meta property="og:description" content="promise解决回调地狱（callback hell） 具体参考 阮一峰,ES6标准入门  在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现  回调地狱（callback）的情况 例如：  12345678910111213141516171819202122var fs = require(&apos;fs&apos;)fs.readFile(&apos;../data/a.txt&apos;,&apos;ut">
+<meta property="og:description" content="具体参考 阮一峰,ES6标准入门 在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现 回调地狱（callback）的情况 例如：  12345678910111213141516171819202122var fs = require(&apos;fs&apos;)fs.readFile(&apos;../data/a.txt&apos;,&apos;utf8&apos;,function (err,data) &amp;#123;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/01/12/promise解决回调地狱-callback-hell/callbackhell.jpg">
-<meta property="og:updated_time" content="2019-01-12T08:46:04.774Z">
+<meta property="og:updated_time" content="2019-01-12T08:55:29.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="promise解决回调地狱(callback-hell)">
-<meta name="twitter:description" content="promise解决回调地狱（callback hell） 具体参考 阮一峰,ES6标准入门  在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现  回调地狱（callback）的情况 例如：  12345678910111213141516171819202122var fs = require(&apos;fs&apos;)fs.readFile(&apos;../data/a.txt&apos;,&apos;ut">
+<meta name="twitter:description" content="具体参考 阮一峰,ES6标准入门 在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现 回调地狱（callback）的情况 例如：  12345678910111213141516171819202122var fs = require(&apos;fs&apos;)fs.readFile(&apos;../data/a.txt&apos;,&apos;utf8&apos;,function (err,data) &amp;#123;">
 <meta name="twitter:image" content="http://yoursite.com/2019/01/12/promise解决回调地狱-callback-hell/callbackhell.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Ruoduan&#39;s Blog" type="application/atom+xml">
@@ -200,11 +200,9 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="promise解决回调地狱（callback-hell）"><a href="#promise解决回调地狱（callback-hell）" class="headerlink" title="promise解决回调地狱（callback hell）"></a>promise解决回调地狱（callback hell）</h3><ul>
-<li><p>具体参考 <a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">阮一峰,ES6标准入门</a></p>
-</li>
-<li><p>在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现</p>
-</li>
+        <ul>
+<li>具体参考 <a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">阮一峰,ES6标准入门</a></li>
+<li>在我们需要对一个异步操作进行频繁的调用的时候，且要保证一步操作的顺序，可能会出现</li>
 <li>回调地狱（callback）的情况 例如：</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'../data/a.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">err,data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">throw</span> err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line"></span><br><span class="line">    fs.readFile(<span class="string">'../data/b.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">err,data</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            <span class="keyword">throw</span> err</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line"></span><br><span class="line">        fs.readFile(<span class="string">'../data/c.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">err,data</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                <span class="keyword">throw</span> err</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(data);   </span><br><span class="line">        &#125;) </span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -300,9 +298,9 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#promise解决回调地狱（callback-hell）"><span class="nav-number">1.</span> <span class="nav-text">promise解决回调地狱（callback hell）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#但是这样子的代码复用太多，我们可以给他稍微封装一下"><span class="nav-number">1.1.</span> <span class="nav-text">但是这样子的代码复用太多，我们可以给他稍微封装一下</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#但是这样子的代码复用太多，我们可以给他稍微封装一下"><span class="nav-number">1.</span> <span class="nav-text">但是这样子的代码复用太多，我们可以给他稍微封装一下</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a>
     
-    </div>
+    </li></div>
   </aside>
 </section>
         
