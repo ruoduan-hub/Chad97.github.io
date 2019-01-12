@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/protype1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/protype2.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/26/JavaScript原型，原型链，继承/protype3.png">
-<meta property="og:updated_time" content="2019-01-12T08:31:10.987Z">
+<meta property="og:updated_time" content="2019-01-12T08:41:20.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript原型，原型链，继承">
 <meta name="twitter:description" content="原型 原型的作用：1、通过原型来添加方法，解决数据共享，节省内存空间2、作用于继承，模拟面向对象，来做到继承，多态  构造函数   1234function Person(name,age) &amp;#123;      this.name=name;      this.age=age;    &amp;#125;;  通过原型添加方法：  123Person.prototype.eat=function (">
@@ -246,7 +246,9 @@ var themeMenus = {};
 <p>输出：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stu.eat(); <span class="comment">//人</span></span><br><span class="line">stu.sayHi(); <span class="comment">//学生</span></span><br></pre></td></tr></table></figure>
 <p>查看结构：console.dir(stu);<br><img src="/2018/11/26/JavaScript原型，原型链，继承/protype1.png" alt="这里写图片描述"><br><br><br></p>
-<p></p><h4><strong>于是推出以下结论：</strong><h4><p></p>
+<ul>
+<li>于是推出以下结论</li>
+</ul>
 <p>当调用某种方法或查找某种属性时，首先会在自身调用和查找，如果自身并没有该属性或方法，则会去它的_ <em>proto</em> _属性中调用查找，也就是它构造函数的prototype中调用查找<br><br><br>附一张原型截个图（图片来自于网络）<br><img src="/2018/11/26/JavaScript原型，原型链，继承/protype2.png" alt="这里写图片描述"></p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a><strong>继承</strong></h2><p>其实上面那种方式就继承中的其中一种——<strong>原型继承</strong>了；为什么要到现在才说呢，就是为了结合继承对原型的理解更加深入更加易于理解，下面我将继续阐述几种继承并指出他们的优缺点和相应的案例</p>
 <p> <strong>构造继承</strong><br>核心：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）</p>
@@ -305,8 +307,7 @@ var themeMenus = {};
 <p><br><br><br></p>
 <p> <strong>寄生组合继承</strong><br> 核心：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 创建一个没有实例方法的类</span></span><br><span class="line">  <span class="keyword">var</span> Super = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  Super.prototype = Animal.prototype;</span><br><span class="line">  <span class="comment">//将实例作为子类的原型</span></span><br><span class="line">  Cat.prototype = <span class="keyword">new</span> Super();</span><br><span class="line">&#125;)();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>特点：</p>
-<ol>
+<h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ol>
 <li>堪称完美</li>
 </ol>
 <p>缺点：</p>
@@ -330,7 +331,7 @@ var themeMenus = {};
 <li>原型对象：拥有prototype属性的对象，在定义函数时就被创建<br><br><br></li>
 </ul>
 <p><img src="/2018/11/26/JavaScript原型，原型链，继承/protype3.png" alt="这里写图片描述"></p>
-</h4></h4>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -414,175 +415,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">1.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">于是推出以下结论：
-当调用某种方法或查找某种属性时，首先会在自身调用和查找，如果自身并没有该属性或方法，则会去它的_ proto _属性中调用查找，也就是它构造函数的prototype中调用查找附一张原型截个图（图片来自于网络）
-继承其实上面那种方式就继承中的其中一种——原型继承了；为什么要到现在才说呢，就是为了结合继承对原型的理解更加深入更加易于理解，下面我将继续阐述几种继承并指出他们的优缺点和相应的案例
- 构造继承核心：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）
-1234567891011function Cat(name){  Animal.call(this);  this.name = name || &#39;Tom&#39;;} // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // falseconsole.log(cat instanceof Cat); // true
-特点：
-
-解决了1中，子类实例共享父类引用属性的问题 
-创建子类实例时，可以向父类传递参数   
-可以实现多继承（call多个父类对象）
-
-缺点：
-
-实例并不是父类的实例，只是子类的实例    
-只能继承父类的实例属性和方法，不能继承原型属性/方法   
-无法实现函数复用，每个子类都有父类实例函数的副本，影响性能
-
-
-  实例继承 核心：为父类实例添加新特性，作为子类实例返回123456789101112function Cat(name){  var instance = new Animal();  instance.name = name || &#39;Tom&#39;;  return instance;} // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // trueconsole.log(cat instanceof Cat); // false
-特点：
-
-不限制调用方式，不管是new 子类()还是子类(),返回的对象具有相同的效果
-
-缺点：
-
-实例是父类的实例，不是子类的实例     
-不支持多继承
-
-拷贝继承 
-1234567891011121314151617181920212223242526272829    var obj1={        name:10,        age:&quot;女&quot;,        sleep:function () {            console.log(&quot;睡觉&quot;)        }    };    //改变了地址指向    var obj2=obj1;    console.log(obj2.name,obj2.age,);    obj2.sleep();//这个拷贝只是改变了栈的指向//而下面方法，是把堆里面的属性和方法复制一份重新开了一个空间function Cat(name){  var animal = new Animal();  for(var p in animal){    Cat.prototype[p] = animal[p];  }  Cat.prototype.name = name || &#39;Tom&#39;;} // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // falseconsole.log(cat instanceof Cat); // tru
-
-
-特点：
-
-支持多继承
-
-缺点：
-
-效率较低，内存占用高（因为要拷贝父类的属性）   
-无法获取父类不可枚举的方法（不可枚举方法，不能使用for in 访问到）
-组合继承（常用的继承方式）核心：通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用
-
-
-12345678910111213141516171819202122232425//原型实现继承    //借用构造函数实现继承    //组合继承:原型继承+借用构造函数继承    function Person(name,age,sex) {        this.name=name;        this.age=age;        this.sex=sex;    };    Person.prototype.sayHi=function () {      console.log(&quot;人的打招呼&quot;);    };    function Student(name,age,sex,score) {        //借用构造函数:属性值重复的问题        Person.call(this,name,age,sex)        this.score=score;    };    //改变原型指向----继承    Student.prototype=new Person();//不传值    Student.prototype.eat=function () {        console.log(&quot;学生的吃原型&quot;);    };    var stu1=new Student(&quot;小明&quot;,&quot;18&quot;,&quot;男&quot;,&quot;100&quot;);    console.log(stu1.name,stu1.age,stu1.sex,stu1.score);//小明 18 男 100    stu1.sayHi();//人的打招呼    stu1.eat();//学生的吃原型
-特点：
-
-弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法   
-既是子类的实例，也是父类的实例   
-不存在引用属性共享问题  
-可传参   
-函数可复用
-
-缺点：
-
-调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）
-
-
- 寄生组合继承 核心：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点
-123456789101112131415161718function Cat(name){  Animal.call(this);  this.name = name || &#39;Tom&#39;;}(function(){  // 创建一个没有实例方法的类  var Super = function(){};  Super.prototype = Animal.prototype;  //将实例作为子类的原型  Cat.prototype = new Super();})(); // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // trueconsole.log(cat instanceof Cat); //true
-特点：
-
-堪称完美
-
-缺点：
-
-实现较为复杂
-
-附一点题外话：
-
-
-
-面向对象编程思想:根据需求,分析对象,找到对象有什么特征和行为,通过代码的方式来实现需求,要想实现这个需求,就要创建对象,要想创建对象,就应该显示有构造函数,然后通过构造函数来创建对象.,通过对象调用属性和方法来实现相应的功能及需求,即可
-
-首先JS不是一门面向对象的语言,JS是一门基于对象的语言,那么为什么学习js还要学习面向对象,因为面向对象的思想适合于人的想法,编程起来会更加的方便,及后期的维护….
-
-面向对象的编程语言中有类(class)的概念(也是一种特殊的数据类型),但是JS不是面向对象的语言,所以,JS中没有类(class),但是JS可以模拟面向对象的思想编程,JS中会通过构造函数来模拟类的概念(class)
-
-所有引用类型（函数，数组，对象）都拥有proto属性（隐式原型）
-
-所有函数拥有prototype属性（显式原型）（仅限函数）
-
-原型对象：拥有prototype属性的对象，在定义函数时就被创建
-
-
-</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">
-当调用某种方法或查找某种属性时，首先会在自身调用和查找，如果自身并没有该属性或方法，则会去它的_ proto _属性中调用查找，也就是它构造函数的prototype中调用查找附一张原型截个图（图片来自于网络）
-继承其实上面那种方式就继承中的其中一种——原型继承了；为什么要到现在才说呢，就是为了结合继承对原型的理解更加深入更加易于理解，下面我将继续阐述几种继承并指出他们的优缺点和相应的案例
- 构造继承核心：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）
-1234567891011function Cat(name){  Animal.call(this);  this.name = name || &#39;Tom&#39;;} // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // falseconsole.log(cat instanceof Cat); // true
-特点：
-
-解决了1中，子类实例共享父类引用属性的问题 
-创建子类实例时，可以向父类传递参数   
-可以实现多继承（call多个父类对象）
-
-缺点：
-
-实例并不是父类的实例，只是子类的实例    
-只能继承父类的实例属性和方法，不能继承原型属性/方法   
-无法实现函数复用，每个子类都有父类实例函数的副本，影响性能
-
-
-  实例继承 核心：为父类实例添加新特性，作为子类实例返回123456789101112function Cat(name){  var instance = new Animal();  instance.name = name || &#39;Tom&#39;;  return instance;} // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // trueconsole.log(cat instanceof Cat); // false
-特点：
-
-不限制调用方式，不管是new 子类()还是子类(),返回的对象具有相同的效果
-
-缺点：
-
-实例是父类的实例，不是子类的实例     
-不支持多继承
-
-拷贝继承 
-1234567891011121314151617181920212223242526272829    var obj1={        name:10,        age:&quot;女&quot;,        sleep:function () {            console.log(&quot;睡觉&quot;)        }    };    //改变了地址指向    var obj2=obj1;    console.log(obj2.name,obj2.age,);    obj2.sleep();//这个拷贝只是改变了栈的指向//而下面方法，是把堆里面的属性和方法复制一份重新开了一个空间function Cat(name){  var animal = new Animal();  for(var p in animal){    Cat.prototype[p] = animal[p];  }  Cat.prototype.name = name || &#39;Tom&#39;;} // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // falseconsole.log(cat instanceof Cat); // tru
-
-
-特点：
-
-支持多继承
-
-缺点：
-
-效率较低，内存占用高（因为要拷贝父类的属性）   
-无法获取父类不可枚举的方法（不可枚举方法，不能使用for in 访问到）
-组合继承（常用的继承方式）核心：通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用
-
-
-12345678910111213141516171819202122232425//原型实现继承    //借用构造函数实现继承    //组合继承:原型继承+借用构造函数继承    function Person(name,age,sex) {        this.name=name;        this.age=age;        this.sex=sex;    };    Person.prototype.sayHi=function () {      console.log(&quot;人的打招呼&quot;);    };    function Student(name,age,sex,score) {        //借用构造函数:属性值重复的问题        Person.call(this,name,age,sex)        this.score=score;    };    //改变原型指向----继承    Student.prototype=new Person();//不传值    Student.prototype.eat=function () {        console.log(&quot;学生的吃原型&quot;);    };    var stu1=new Student(&quot;小明&quot;,&quot;18&quot;,&quot;男&quot;,&quot;100&quot;);    console.log(stu1.name,stu1.age,stu1.sex,stu1.score);//小明 18 男 100    stu1.sayHi();//人的打招呼    stu1.eat();//学生的吃原型
-特点：
-
-弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法   
-既是子类的实例，也是父类的实例   
-不存在引用属性共享问题  
-可传参   
-函数可复用
-
-缺点：
-
-调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）
-
-
- 寄生组合继承 核心：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点
-123456789101112131415161718function Cat(name){  Animal.call(this);  this.name = name || &#39;Tom&#39;;}(function(){  // 创建一个没有实例方法的类  var Super = function(){};  Super.prototype = Animal.prototype;  //将实例作为子类的原型  Cat.prototype = new Super();})(); // Test Codevar cat = new Cat();console.log(cat.name);console.log(cat.sleep());console.log(cat instanceof Animal); // trueconsole.log(cat instanceof Cat); //true
-特点：
-
-堪称完美
-
-缺点：
-
-实现较为复杂
-
-附一点题外话：
-
-
-
-面向对象编程思想:根据需求,分析对象,找到对象有什么特征和行为,通过代码的方式来实现需求,要想实现这个需求,就要创建对象,要想创建对象,就应该显示有构造函数,然后通过构造函数来创建对象.,通过对象调用属性和方法来实现相应的功能及需求,即可
-
-首先JS不是一门面向对象的语言,JS是一门基于对象的语言,那么为什么学习js还要学习面向对象,因为面向对象的思想适合于人的想法,编程起来会更加的方便,及后期的维护….
-
-面向对象的编程语言中有类(class)的概念(也是一种特殊的数据类型),但是JS不是面向对象的语言,所以,JS中没有类(class),但是JS可以模拟面向对象的思想编程,JS中会通过构造函数来模拟类的概念(class)
-
-所有引用类型（函数，数组，对象）都拥有proto属性（隐式原型）
-
-所有函数拥有prototype属性（显式原型）（仅限函数）
-
-原型对象：拥有prototype属性的对象，在定义函数时就被创建
-
-
-</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a></li>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">1.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点："><span class="nav-number">2.1.</span> <span class="nav-text">特点：</span></a></li></ol></li></ol>
     
     </div>
   </aside>
