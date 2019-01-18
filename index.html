@@ -260,6 +260,63 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-canvas穿透pointer-events属性" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/01/18/canvas穿透pointer-events属性/">canvas穿透pointer-events属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/18/canvas穿透pointer-events属性/" class="article-date">
+	  <time datetime="2019-01-18T07:03:19.000Z" itemprop="datePublished">2019-01-18</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/《Front-end》/">《Front-end》</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          遇到这个问题这里记录一下，解决方案也非常简单
+
+在我们把 canvas 作为 网站的 body 背景的 时候，如果z-index 的层级没注意设计，默认情况下，canvas 会遮挡网站上的 a 链接 和一些按钮的
+
+遇到这个 问题 我们只需要在 canvas 背景中添加一个css 属性：pointer-events: none
+你可以选择后期用 js 添加，也可以在创建的 时候直接写上，如果是canvas 在本地 可以直接写上，如果是请求而来的，可以用js 给相应的 canvas 添加这一...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/01/18/canvas穿透pointer-events属性/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-promise解决回调地狱-callback-hell" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
