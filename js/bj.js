@@ -7,7 +7,7 @@
     }
     
     
-    if (isMobile() !== false)
+    if (isMobile() == false)
 
 
 ! function () {
