@@ -1,3 +1,15 @@
+
+    function isMobile() {
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)))
+            return true;
+        else
+            return false;
+    }
+    
+    
+    if (isMobile() !== false)
+
+
 ! function () {
     function o(w, v, i) {
         return w.getAttribute(v) || i
