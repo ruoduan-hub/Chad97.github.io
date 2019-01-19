@@ -3,7 +3,7 @@ function isMobile() {
         return true;
     else
         return false;
-};
+}
 
 //pc
 if (isMobile() == false) {

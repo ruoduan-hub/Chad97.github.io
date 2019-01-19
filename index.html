@@ -883,6 +883,11 @@ color="128,0,128" opacity='0.6' zIndex="0" count="90" src="/js/bj.js"></script>
 <audio src="http://fs.open.kugou.com/b9e4362e9a4a9dcc624a8ab136ba3559/5c4150f3/G072/M08/17/1D/6IYBAFfXp1mAFn57ADIf3jwMPtw274.mp3"
         loop autoplay preload="auto">
 </audio>
+<script>
+  document.addEventListener('touchstart', function() {
+                document.getElementById('audios').play()
+            })
+</script>
 {% endif %}
 
 </body>
