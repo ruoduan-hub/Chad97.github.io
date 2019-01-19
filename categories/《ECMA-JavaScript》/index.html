@@ -428,7 +428,7 @@ color="128,0,128" opacity='0.6' zIndex="0" count="90" src="/js/bj.js"></script>
         loop autoplay preload="auto">
 </audio>
 <script>
-  document.addEventListener('touchstart', function() {
+  $('html').one('touchstart', function() {
                 document.getElementById('audios').play()
             })
 </script>
