@@ -15,7 +15,7 @@
 <meta name="keywords" content="Front-end">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas穿透pointer-events属性">
-<meta property="og:url" content="http://yoursite.com/2019/01/18/canvas穿透pointer-events属性/index.html">
+<meta property="og:url" content="https://www.ruoduan.top/2019/01/18/canvas穿透pointer-events属性/index.html">
 <meta property="og:site_name" content="Ruoduan&#39;s Blog">
 <meta property="og:description" content="遇到这个问题这里记录一下，解决方案也非常简单  在我们把 canvas 作为 网站的 body 背景的 时候，如果z-index 的层级没注意设计，默认情况下，canvas 会遮挡网站上的 a 链接 和一些按钮的  遇到这个 问题 我们只需要在 canvas 背景中添加一个css 属性：pointer-events: none 你可以选择后期用 js 添加，也可以在创建的 时候直接写上，如果是ca">
 <meta property="og:locale" content="zh-CN">
@@ -66,6 +66,21 @@
     <link rel="stylesheet" href="/css/vdonate.css">
   
 
+  <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    
 </head>
 </html>
 
@@ -246,7 +261,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2019/01/18/canvas穿透pointer-events属性/" target="_blank" title="canvas穿透pointer-events属性">http://yoursite.com/2019/01/18/canvas穿透pointer-events属性/</a>
+          <a href="/2019/01/18/canvas穿透pointer-events属性/" target="_blank" title="canvas穿透pointer-events属性">https://www.ruoduan.top/2019/01/18/canvas穿透pointer-events属性/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
