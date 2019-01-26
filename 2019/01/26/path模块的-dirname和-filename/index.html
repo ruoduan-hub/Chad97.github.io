@@ -3,22 +3,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>归档: 2018/12 | Ruoduan&#39;s Blog</title>
+  <title>path模块的__dirname和__filename | Ruoduan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Nodejs">
   
   
   
-  <meta name="description" content="人非圣贤，都会留恋这个花花世界，坚其本心方得始终">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ruoduan&#39;s Blog">
-<meta property="og:url" content="https://www.ruoduan.top/archives/2018/12/index.html">
+  
+  <meta name="description" content="nodejs ——path模块的dirname 和 filename 我们在使用nodejs，可能需要对 node_modules 开放一些目录，fs 取的是绝对路径，而我们在不同的环境下，node_modules 可能存在于 不同的 根目录中，这个时候我们就要用到 join（）方法 来吧绝对路径进行一个转换，来获取一个动态的绝对路径 12app.use(&apos;/public/&apos;, express.s">
+<meta name="keywords" content="Nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="path模块的__dirname和__filename">
+<meta property="og:url" content="https://www.ruoduan.top/2019/01/26/path模块的-dirname和-filename/index.html">
 <meta property="og:site_name" content="Ruoduan&#39;s Blog">
-<meta property="og:description" content="人非圣贤，都会留恋这个花花世界，坚其本心方得始终">
+<meta property="og:description" content="nodejs ——path模块的dirname 和 filename 我们在使用nodejs，可能需要对 node_modules 开放一些目录，fs 取的是绝对路径，而我们在不同的环境下，node_modules 可能存在于 不同的 根目录中，这个时候我们就要用到 join（）方法 来吧绝对路径进行一个转换，来获取一个动态的绝对路径 12app.use(&apos;/public/&apos;, express.s">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-26T08:22:31.209Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ruoduan&#39;s Blog">
-<meta name="twitter:description" content="人非圣贤，都会留恋这个花花世界，坚其本心方得始终">
+<meta name="twitter:title" content="path模块的__dirname和__filename">
+<meta name="twitter:description" content="nodejs ——path模块的dirname 和 filename 我们在使用nodejs，可能需要对 node_modules 开放一些目录，fs 取的是绝对路径，而我们在不同的环境下，node_modules 可能存在于 不同的 根目录中，这个时候我们就要用到 join（）方法 来吧绝对路径进行一个转换，来获取一个动态的绝对路径 12app.use(&apos;/public/&apos;, express.s">
   
     <link rel="alternate" href="/atom.xml" title="Ruoduan&#39;s Blog" type="application/atom+xml">
   
@@ -57,8 +61,6 @@
   
 
   
-    <link rel="stylesheet" href="/css/archive.css">
-  
   
   
     <link rel="stylesheet" href="/css/vdonate.css">
@@ -83,7 +85,7 @@
 </html>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -105,7 +107,7 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;">
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
               </a>
             
@@ -174,189 +176,160 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>嗯，目前共计8篇文章</span></blockquote>
-
-
-<!-- 分页显示 -->
-
-	
-	
-		
-		
-		  
-		  
-		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
-		    </div>
-		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/12/26/npm-常用命令及切换源/" class="archive-article-date">
-	  <time datetime="2018-12-26T14:58:41.000Z" itemprop="datePublished">2018-12-26</time>
-	</a>
-
-      
+          <section id="main" style="float:none;"><article id="post-path模块的-dirname和-filename" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/12/26/npm-常用命令及切换源/">npm-常用命令及切换源</a>
+      path模块的__dirname和__filename
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/26/path模块的-dirname和-filename/" class="article-date">
+	  <time datetime="2019-01-26T08:20:33.000Z" itemprop="datePublished">2019-01-26</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/《Nodejs》/">《Nodejs》</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="nodejs-——path模块的dirname-和-filename"><a href="#nodejs-——path模块的dirname-和-filename" class="headerlink" title="nodejs ——path模块的dirname 和 filename"></a>nodejs ——path模块的<strong>dirname 和 </strong>filename</h2><ul>
+<li><p>我们在使用nodejs，可能需要对 node_modules 开放一些目录，fs 取的是绝对路径，而我们在不同的环境下，node_modules 可能存在于 不同的 根目录中，这个时候我们就要用到 join（）方法 来吧绝对路径进行一个转换，<br>来获取一个动态的绝对路径<br><br></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/public/'</span>, express.static(path.join(__dirname, <span class="string">'./public/'</span>)))</span><br><span class="line">app.use(<span class="string">'/node_modules/'</span>, express.static(path.join(__dirname, <span class="string">'./node_modules/'</span>)))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这里我们开放了 public和node_modules 这2个 目录文件夹</p>
+<ul>
+<li><strong>dirname 和 </strong>filename<ul>
+<li><strong>动态的</strong> 获取当前文件或者文件所处目录的绝对路径</li>
+<li>用来解决文件操作路劲的相对路径问题</li>
+<li>因为在文件操作中，相对路径相对于执行 <code>node</code> 命令所处的目录</li>
+<li>所以为了尽量避免这个问题，都建议文件操作的相对路径都转为：<strong>动态的绝对路径</strong></li>
+<li>方式：<code>path.join(__dirname, &#39;文件名&#39;)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>dirname 和 </strong>filename 是模块中 的一个内置成员，他们分别是：</p>
+<ul>
+<li>__dirname 是当前文件夹的绝对路径</li>
+<li>__filename是当前文件的绝对路径</li>
+</ul>
+</li>
+<li>一般情况下都是 配合 join方法使用的，把当前相对路径转换为 动态的绝对路径</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatImage.jpg',
+  alipayImage: '/css/images/alipayImage.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Ruoduan
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/01/26/path模块的-dirname和-filename/" target="_blank" title="path模块的__dirname和__filename">https://www.ruoduan.top/2019/01/26/path模块的-dirname和-filename/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/18/canvas穿透pointer-events属性/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">canvas穿透pointer-events属性</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-	
-	
-		</div></section>
-	
 
-	<!-- 页数指示器 -->
-	
+<!-- Table of Contents -->
 
-
-
-
-</div></section>
-          <aside id="sidebar">
-  
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">关注我</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/Chad97" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://weibo.com/5024868417/profile?topnav=1&amp;wvr=6&amp;is_all=1" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:chad97@126.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-——path模块的dirname-和-filename"><span class="nav-number">1.</span> <span class="nav-text">nodejs ——path模块的dirname 和 filename</span></a></li></ol>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/《ECMA-JavaScript》/">《ECMA JavaScript》</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《Front-end》/">《Front-end》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《Nodejs》/">《Nodejs》</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《VUE》/">《VUE》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《数据库》/">《数据库》</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/《记》/">《记》</a><span class="category-list-count">1</span></li></ul>
     </div>
-  </div>
+  </aside>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMA-JavaScript/">ECMA-JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/">Front-end</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ECMA-JavaScript/" style="font-size: 20px;">ECMA-JavaScript</a> <a href="/tags/Front-end/" style="font-size: 10px;">Front-end</a> <a href="/tags/Nodejs/" style="font-size: 20px;">Nodejs</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/记/" style="font-size: 10px;">记</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/01/26/path模块的-dirname和-filename/">path模块的__dirname和__filename</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/18/canvas穿透pointer-events属性/">canvas穿透pointer-events属性</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/12/promise解决回调地狱-callback-hell/">promise解决回调地狱(callback-hell)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/nosql数据库-mongodb使用gongoos的CRUD/">nosql数据库-mongodb使用gongoos的CRUD</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/26/npm-常用命令及切换源/">npm-常用命令及切换源</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
+</section>
         
       </div>
       
@@ -452,6 +425,8 @@
 
 
 
+  <script src="/js/dialog.js"></script>
+
 
 
 
@@ -535,6 +510,8 @@
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 
   <!-- 鼠标点击动画 -->
