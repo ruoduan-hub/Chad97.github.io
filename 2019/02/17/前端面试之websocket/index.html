@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>前端面试之websocket | Ruoduan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="记">
+  
+  
+  
+  
+  <meta name="description" content="坐标 滨江 *小白  2019-2-15 下午 岗位 web前端  约的下午4点 ，因为住的较远，从住的地方到需要面试的公司 需要坐2趟公交换2趟地铁 行程花费大概2小时左右，当天有下小雨，路上比较泥泞，我只身一人背着电脑包前去。 3.30左右 到，我习惯性的提前一点到，到的时候楼下的保安小哥哥，不让进，问我来干嘛的，我答曰：“面试的”， “登记” ，“好的” 我发现 登记要留电话就算了，还要留">
+<meta name="keywords" content="记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试之websocket">
+<meta property="og:url" content="https://www.ruoduan.top/2019/02/17/前端面试之websocket/index.html">
+<meta property="og:site_name" content="Ruoduan&#39;s Blog">
+<meta property="og:description" content="坐标 滨江 *小白  2019-2-15 下午 岗位 web前端  约的下午4点 ，因为住的较远，从住的地方到需要面试的公司 需要坐2趟公交换2趟地铁 行程花费大概2小时左右，当天有下小雨，路上比较泥泞，我只身一人背着电脑包前去。 3.30左右 到，我习惯性的提前一点到，到的时候楼下的保安小哥哥，不让进，问我来干嘛的，我答曰：“面试的”， “登记” ，“好的” 我发现 登记要留电话就算了，还要留">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.ruoduan.top/2019/02/17/前端面试之websocket/前端面试之websocket/http1.png">
+<meta property="og:image" content="https://www.ruoduan.top/2019/02/17/前端面试之websocket/HTTP2.png">
+<meta property="og:image" content="https://www.ruoduan.top/2019/02/17/前端面试之websocket/Heap1.png">
+<meta property="og:image" content="https://www.ruoduan.top/2019/02/17/前端面试之websocket/Heap2.png">
+<meta property="og:updated_time" content="2019-02-17T09:27:30.699Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试之websocket">
+<meta name="twitter:description" content="坐标 滨江 *小白  2019-2-15 下午 岗位 web前端  约的下午4点 ，因为住的较远，从住的地方到需要面试的公司 需要坐2趟公交换2趟地铁 行程花费大概2小时左右，当天有下小雨，路上比较泥泞，我只身一人背着电脑包前去。 3.30左右 到，我习惯性的提前一点到，到的时候楼下的保安小哥哥，不让进，问我来干嘛的，我答曰：“面试的”， “登记” ，“好的” 我发现 登记要留电话就算了，还要留">
+<meta name="twitter:image" content="https://www.ruoduan.top/2019/02/17/前端面试之websocket/前端面试之websocket/http1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Ruoduan&#39;s Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-前端面试之websocket" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      前端面试之websocket
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/02/17/前端面试之websocket/" class="article-date">
+	  <time datetime="2019-02-17T09:04:51.000Z" itemprop="datePublished">2019-02-17</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/《记》/">《记》</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>坐标 滨江 *小白  2019-2-15 下午</p>
+<p>岗位 web前端</p>
+</blockquote>
+<p>约的下午4点 ，因为住的较远，从住的地方到需要面试的公司 需要坐2趟公交换2趟地铁</p>
+<p>行程花费大概2小时左右，当天有下小雨，路上比较泥泞，我只身一人背着电脑包前去。</p>
+<p>3.30左右 到，我习惯性的提前一点到，到的时候楼下的保安小哥哥，不让进，问我来干嘛的，我答曰：“面试的”，</p>
+<p>“登记” ，“好的”</p>
+<p>我发现 登记要留电话就算了，还要留身份证号？ emmmm？ 我当然是发挥我的 草书啦~ 这种东西怎么能乱写</p>
+<p>好了 进入正题：</p>
+<h3 id="情景再现"><a href="#情景再现" class="headerlink" title="情景再现"></a>情景再现</h3><hr>
+<p>​    坐电梯 来到17楼，发现前台没人，刚好有一个小哥哥出来，我告诉他我是来面试的，他让我坐一会</p>
+<p>大概等了一会，5分钟左右，又来了一哥们 ，我回首望去，气宇轩昂，一看定不是池中之物，头发油油的，</p>
+<p>棉服牛仔裤，此人定是 修道三年以上 金丹期 后端程序员也，只见这哥们入门直步身后，曰：“我是来面试”，</p>
+<p>我略微有一点尴尬 emmmmm。。。 “额…  我也是来面试的”，此时hr小姐姐出来的 让我们坐一会，ps：因为我有一个 未做完的 webapp 个人项目，想的可能需要展示，又怕 这边 没有<code>nodejs</code>环境 没法<code>npm i -S</code>大法   ,还有就是我比较 粗暴直接 ，有些东西无法语言描述 我就直接 pilipala pilipala 给你敲出来 ——奈何最后也没用到，而且场面也一度失去控制</p>
+<p>​    和这个 做安卓的 小哥哥 聊了一会，尬聊,  HR小姐姐过来了  给我们发简历，我一想 我的简历是做成 pages，挂在<code>coding</code>上  固然没有的 PDF ，和小姐姐解释了一会  </p>
+<p>​    大概又是8分钟左右，刚HR小姐姐，来叫过去面试，我和哪哥们异口同声答曰：是叫我吗？</p>
+<p>然后 “安卓还是前端”  ，小姐姐迟疑了一会 “前端”  于是乎 我背起我电脑 进去了 会议室——入门乍一看 三人，一女二男，2个男的 一个 看起来 28-30左右  一个 30以上 ，一看就是5年以上的 元婴 大成者， 一顿 相互问候 打招呼 入座，下面 我们就这么称呼吧  const  男1 男2  女1 = M1 M2  W1</p>
+<p>W1: “介绍下自己吧~”</p>
+<p>“bala bala bala…….  从实习到换工作”</p>
+<p>W1：“你是辞职了，还是在职？”</p>
+<p>“辞职了”</p>
+<p>W1:“什么原因呢？”</p>
+<p>“bala  bala…..” <code>这里小端，提醒一般情况下说一下，自己想找更好的发展，不要吐槽上一家公司，也不要抱怨，也不要说什么 钱不到位.....  当然吹是可以的 不要太过头</code></p>
+<p>M1：“对jquery 了解吗”</p>
+<p>“了解的”</p>
+<p>M1: “讲一下他的原理和实现吧”</p>
+<p>“根元素 $ ……    balbalbal”</p>
+<p>M1：“你除了，js和 还了解其他语言吗？”</p>
+<p>“大学时C入门，涉及一些PHP 做过一些 ，不过现在后端语言我主要是nodejs  ps：但是它还是js”</p>
+<p>M1：“平时做项目有遇到一些特别难解决的问题吗？最后是怎么解决的？”</p>
+<p>“讲 ，坑 ………………………”</p>
+<p><strong>重点来了</strong> ：我在讲的过程中 比较激动~ 手也有跟着笔画嘛 ，就不小心吧 眼镜打掉了  <strong>尴尬~！！</strong></p>
+<p>W1：“哎呦卧槽！狂笑  hahahhahahaahah ……”  然后走出去了</p>
+<p>WO : MMP  ,老子再讲我涉及的问题和知识点，不小心 额。。。。 至于这样吗？ 尴尬到死 ~ 同时对这个女的没什么好感！ (⊙o⊙)…  不淡定  淡定   我 嘴上笑嘻嘻 心里 MMP</p>
+<p>然后一顿  尬聊………………….</p>
+<hr>
+<p>M2：“后端要主动向前端发送数据如何实现？”</p>
+<p>“额。。。。 后端主动发送。。。  我不请求，他凭什么发数据给我，这不乱套了么”   ps ：这不是后端的事吗……</p>
+<p>M2：“比如，有一个数据要持续性 的更新，你请求的话不能 设置定时器吧，这样性能太损耗了”</p>
+<p>“卧槽 ！ 问到我的知识盲点了，一下子没底了 。之前的意气风发，也没有了”</p>
+<p>“开始扯皮~。。。。。。。。。”</p>
+<p><code>还好人家也没有追问</code> M2给人的 感觉是真正做技术的，话不多，但是刀刀致命</p>
+<p>接下来 聊了一下  HTTP协议 TCP/IP  3次握手4次挥手 …..</p>
+<p><strong>越扯越远  我超级想说  我是前端啊  大哥  求求你问我一点  框架啊   JS啊   异步啊  兼容性啊  …..</strong></p>
+<p>后面 W1 又进来了 还有一个中年男人 看样子 应该是他们的领导</p>
+<p>最后 M1  M2 我没什么 要问的了</p>
+<p>W1：“你的期望薪资是？”</p>
+<p>“因为我还不了解 贵公司的福利 ，我想先听一听 贵公司的 薪资结构和和福利制度”</p>
+<p>W1: “说了一下上班时间，13薪等等 …….” <code>ps:感觉极度不专业</code></p>
+<p>“ 沉思了一会  给出来 我的期望薪资”</p>
+<p><strong>最后重点又来了 ：</strong></p>
+<p>这个女的 W1：“我就不送你了 ，你走吧 balabala  ” 很豪放的说</p>
+<p><code>极度不舒服，让人感觉这个女人在菜市场买菜</code></p>
+<p>最后我走了 小插曲 ：“手机还在 他们那边。。。。。。。。。  又回去拿手机”</p>
+<p>我的 尬面 到这里差不多了 ~</p>
+<hr>
+<h3 id="敲黑板-知识点"><a href="#敲黑板-知识点" class="headerlink" title="敲黑板 知识点:"></a>敲黑板 知识点:</h3><p>回去我，思考了一下 又问了一下 我做java 的朋友【约她出来烫头】不要问我为什么烫头~  </p>
+<p>最后得知   以下是我 下网搜的 后面补课的</p>
+<h4 id="websocket："><a href="#websocket：" class="headerlink" title="websocket："></a><strong>websocket</strong>：</h4><p>websocket是HTML5的一个新协议，它允许服务端向客户端传递信息，实现浏览器和客户端双工通信。websocket弥补了HTTP不支持长连接的特点，那么在学习websocket之前我们先来了解以下HTTP</p>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>HTTP是用于传输如HTML文件,图片文件，查询结果的应用层协议。它被设计于用于服务端和客户端之间的通信。在工作的时候，客户端打开一个连接以发出请求，然后等待服务端响应，服务端不能主动向客户端发送请求。HTTP是无状态协议，意味着服务器不会在两个请求之间保留任何数据。那么这就带来了一个问题，比如说在一个电商网站中，把某个物品加入了购物车，换了一个页面后，在添加一个物品，两次添加物品的请求没有联系，浏览器无法知道用户选择了那些商品。解决方法是在HTTP头部中加入cookie信息这样每次请求都能够共享相同的状态。</p>
+<h2 id="那么HTTP请求响应的工作流程是什么呢？"><a href="#那么HTTP请求响应的工作流程是什么呢？" class="headerlink" title="那么HTTP请求响应的工作流程是什么呢？"></a>那么HTTP请求响应的工作流程是什么呢？</h2><p>1、客户端连接到web服务器，与web服务器的HTTP端口（默认是80）建立一个TCP套接字连接<br>2、发送HTTP请求 通过TCP套接字，客户端向服务器发送一个文本的请求报文，一个请求报文由请求行，请求头部，空行和请求数据四个部分构成<br>3、服务端接受请求并返回HTTP响应 web服务器解析请求，定位请求资源。服务器将资源复本写到TCP套接字，由客户端读取。一个响应由状态行、响应头部、空行和响应数据4部分组成。<br>4、释放连接TCP连接 Web服务器主动关闭TCP套接字，释放TCP连接；客户端被动关闭TCP套接字，释放TCP连接。<br>5、客户端浏览器解析HTML内容 客户端浏览器首先解析状态行，查看表明请求是否成功的状态代码。然后解析每一个响应头，响应头告知以下为若干字节的HTML文档和文档的字符集。客户端浏览器读取响应数据HTML，根据HTML的语法对其进行格式化，并在浏览器窗口中显示。<br>关于HTTP内容不多讲，太多了我也讲不了。推荐大家去看《HTTP权威指南》很小的一本书，讲的很清楚。</p>
+<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTPS是什么呢，他与HTTP的关系又是什么。在上一段讲过HTTP是我们平时浏览网页时使用的一种协议。HTTP协议传输的数据都是没有加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常的不安全。<strong>为了让这些隐私数据能够加密传输，便设计了SSL协议对HTTP传输的数据进行加密，从而诞生了HTTPS。</strong>而后对SSL进行不断的升级，出现了TLS。但是呢，名字用久了也就产生了感情，所以也一直延续着SSL是HTTPS的代名词的习惯。<br>下面这张图能够让你很清晰的认识到HTTP和HTTPS之间的关系这儿有一张图</p>
+<p><img src="前端面试之websocket/http1.png" alt="http"></p>
+<p>那么HTTPS的加密到底是怎么一回事呢。</p>
+<h2 id="加密过程如下"><a href="#加密过程如下" class="headerlink" title="加密过程如下:"></a>加密过程如下:</h2><p>1、浏览器将自己支持的一套加密规则发送给网站。<br>2、网站从中选出一组加密算法与HASH算法，并将自己的身份信息以证书的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及证书的颁发机构等信息。<br>3、获得网站证书之后浏览器要做以下工作：<br>(1) 验证证书的合法性（颁发证书的机构是否合法，证书中包含的网站地址是否与正在访问的地址一致等），如果证书受信任，则浏览器栏里面会显示一个小锁头，否则会给出证书不受信的提示。<br>(2) 如果证书受信任，或者是用户接受了不受信的证书，浏览器会生成一串随机数的密码，并用证书中提供的公钥加密。<br>(3) 使用约定好的HASH计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有信息发送给网站。<br>4、网站接收浏览器发来的数据之后要做以下的操作：<br>(1) 使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证HASH是否与浏览器发来的一致。<br>(2) 使用密码加密一段握手消息，发送给浏览器。<br>5、浏览器解密并计算握手消息的HASH，如果与服务端发来的HASH一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密。</p>
+<h1 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h1><p>讲了这么多终于讲到了websocket。websocket相对与HTTP协议来说是一个持久化的协议。下面是一个典型的websocket握手</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /chat HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==</span><br><span class="line">Sec-WebSocket-Protocol: chat, superchat</span><br><span class="line">Sec-WebSocket-Version: 13</span><br><span class="line">Origin: http://example.com</span><br></pre></td></tr></table></figure>
+<p>可以看到相对于HTTP的头部多了一个头部，其实我们就可以说，websocket借用了HTTP的握手，是HTTP的一个解决特定问题的补丁。 我们在看看上面的头部相对HTTP头部都有哪些变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br></pre></td></tr></table></figure>
+<p>这就是websocket的核心，告诉服务器这是websocket请求，而不是http请求</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==</span><br><span class="line">Sec-WebSocket-Protocol: chat, superchat</span><br><span class="line">Sec-WebSocket-Version: <span class="number">13</span></span><br></pre></td></tr></table></figure>
+<p>Sec-WebSocket-Key是一个Base64 encod的值，是一个随机生成的，用于验证是否是真正的websocket<br>然后Sec-WebSocket-Protocol是一个用户定义的字符串，用来区分同URL下，不同的服务需要不同的协议<br>Sec-WebSocket-Version这个不用说就是websocket的版本号。 那么服务端就会返回下列东西</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">101</span> Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=</span><br><span class="line">Sec-WebSocket-Protocol: chat</span><br></pre></td></tr></table></figure>
+<p>Sec-WebSocket-Accept表示经过服务器确认，并且对客户端的Sec-WebSocket-Key进行了加密。<br>Sec-WebSocket-Protocol表示最终使用的协议。<br>在工作的时候websocket和HTTP有哪些差异呢，下面这张图很好的表示了区别。</p>
+<p><img src="/2019/02/17/前端面试之websocket/HTTP2.png" alt="websocket2">)</p>
+<p>可以看到HTTP获取数据的时候，需要不断的问服务端是否有我要的数据啊，如果有数据就返回数据，没有就过一段时间再次询问服务端是否有我需要的数据。那websocket呢，它只建立一次连接，那么这个连接就不会断，服务端如果有数据的话，会自动返回数据给客户端，还有一个问题，在HTTP中我们提到，HTTP是无状态的，意思它健忘，上一次的请求和这次的请求都没什么联系，我们需要引用cookie才能解决。那么在websockt中，因为是一次长连接，那么这就不用一次次加入cookie，是不是方便很多了。 下面的代码就是websocket在前端代码中的应用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">'WebSocket'</span> <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span><br><span class="line">  websocket = <span class="keyword">new</span> WebSocket(<span class="string">"地址"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 不支持websocket</span></span><br><span class="line">&#125;</span><br><span class="line">websocket.send = (<span class="string">'msg'</span>)</span><br><span class="line">alert(websocket.readyState) <span class="comment">// websocket的准备状况</span></span><br><span class="line">websocket.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">websocket.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">websocket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">websocket.onclose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>好了 就到这里吧~</p>
+<ul>
+<li>补充 一个 面试题  <h2 id="js内存泄露使用什么工具-如何排除？"><a href="#js内存泄露使用什么工具-如何排除？" class="headerlink" title="js内存泄露使用什么工具 如何排除？"></a>js内存泄露使用什么工具 如何排除？</h2></li>
+<li>当然这个也是我后期补的  大自然的 搬运工</li>
+</ul>
+<p>1、使用工具Heap Profiling</p>
+<p>①、Heap Profiling可以记录当前的堆内存（heap）的快照，并生成对象的描述文件，该描述文件给出了当时JS运行所用的所有对象，以及这些对象所占用的内存大小、引用的层级关系等等。</p>
+<p>②、JS运行的时候，会有栈内存（stack）和堆内存（heap），当我们new一个类的时候，这个new出来的对象就保存在heap里，而这个对象的引用则存储在stack里。程序通过stack的引用找到这个对象。例如：var a = [1,2,3]，a是存储在stack中的引用，heap里存储着内容为[1,2,3]的Array对象。</p>
+<p>③、打开调试工具，点击Memory中的Profiles标签，选中“Take Heap Snapshot”,点击“start”按钮，就可以拍在当前JS的heap快照了。</p>
+<p><img src="/2019/02/17/前端面试之websocket/Heap1.png" alt="heap"></p>
+<p>右边视图中列出了heap里的对象列表。</p>
+<p>constructor：类名<br>Distance：对象到根的引用层级距离<br>Objects Count：该类的对象数<br>Shallow Size：对象所占内存（不包含内部引用的其他对象所占的内存）<br>Retained Size：对象所占的总内存（包含····················································）<br>点击上图左上角的黑圈圈，会出现第二个内存快照</p>
+<p>2、内存泄露的排查</p>
+<p><img src="/2019/02/17/前端面试之websocket/Heap2.png" alt="heap2"></p>
+<p>将上图框框切换到comparison（对照）选项，该视图列出了当前视图与上一个视图的对象差异</p>
+<p>#New：新建了多少对象</p>
+<p>#Deleted：回收了多少对象</p>
+<p>#Delta：新建的对象个数减去回收的对象个数<br>重点看closure（闭包），如果#Delta为正数，则表示创建了闭包函数，如果多个快照中都没有变负数，则表示没有销毁闭包</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatImage.jpg',
+  alipayImage: '/css/images/alipayImage.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Ruoduan
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/02/17/前端面试之websocket/" target="_blank" title="前端面试之websocket">https://www.ruoduan.top/2019/02/17/前端面试之websocket/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/02/vue-animation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">vue-animation</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#情景再现"><span class="nav-number">1.</span> <span class="nav-text">情景再现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#敲黑板-知识点"><span class="nav-number">2.</span> <span class="nav-text">敲黑板 知识点:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#websocket："><span class="nav-number">2.1.</span> <span class="nav-text">websocket：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number"></span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#那么HTTP请求响应的工作流程是什么呢？"><span class="nav-number"></span> <span class="nav-text">那么HTTP请求响应的工作流程是什么呢？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTPS"><span class="nav-number"></span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#加密过程如下"><span class="nav-number"></span> <span class="nav-text">加密过程如下:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#websocket"><span class="nav-number"></span> <span class="nav-text">websocket</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js内存泄露使用什么工具-如何排除？"><span class="nav-number"></span> <span class="nav-text">js内存泄露使用什么工具 如何排除？</span></a>
+    
+    </li></ol></li></div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> 本网站作品部分来自于网络，感谢开源社区的诸多开发者 <a href="https://github.com/Chad97" target="_blank">My_Github</a> and <a href="mailto:chad97@1126.com" target="_blank">My_E-mail</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Ruoduan&#39;s Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+  
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Ruoduan&#39;s Blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Ruoduan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+
+  <!-- 鼠标点击动画 -->
+{% if theme.fireworks %}
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+{% endif %}
+
+<!-- canvas背景动画 -->
+{% if theme.canvas_nest %}
+<script type="text/javascript"
+color="128,0,128" opacity='0.6' zIndex="0" count="90" src="/js/bj.js"></script>
+{% endif %}
+
+<!-- 背景音乐 -->
+{% if theme.Background_music %}
+<audio src="http://fs.open.kugou.com/b2015b9b72e21ec48e28c9108f40b629/5c5d815f/G091/M07/0D/19/-4YBAFtrpFKAc_PVAC2_BWfzkSY923.mp3" autoplay ></audio>
+<!-- <script>
+  document.addEventListener('touchstart', function() {
+                let flag = true
+                if (flag) {
+                  document.getElementById('audios').play()
+                  flag = false
+                }
+            })
+</script> -->
+{% endif %}
+
+</body>
+</html>
