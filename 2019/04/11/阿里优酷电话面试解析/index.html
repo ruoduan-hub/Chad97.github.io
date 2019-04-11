@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>阿里优酷电话面试[7连问] | Ruoduan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="记">
+  
+  
+  
+  
+  <meta name="description" content="阿里优酷电话面试[7连问]先进行了一个简单的自我介绍，主要介绍了一下自己的工作经历和一些技术栈 1. 解释一下浏览器解析HTTP的过程 上来就放大招，这个题可深可浅，我整理了一下答案  一次完整的HTTP请求过程当我们在web浏览器的地址栏中输入： www.baidu.com，然后回车，到底发生了什么 过程概览　　1.对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址">
+<meta name="keywords" content="记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里优酷电话面试[7连问]">
+<meta property="og:url" content="https://www.ruoduan.top/2019/04/11/阿里优酷电话面试解析/index.html">
+<meta property="og:site_name" content="Ruoduan&#39;s Blog">
+<meta property="og:description" content="阿里优酷电话面试[7连问]先进行了一个简单的自我介绍，主要介绍了一下自己的工作经历和一些技术栈 1. 解释一下浏览器解析HTTP的过程 上来就放大招，这个题可深可浅，我整理了一下答案  一次完整的HTTP请求过程当我们在web浏览器的地址栏中输入： www.baidu.com，然后回车，到底发生了什么 过程概览　　1.对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.ruoduan.top/2019/04/11/阿里优酷电话面试解析/域名解析.png">
+<meta property="og:image" content="https://www.ruoduan.top/2019/04/11/阿里优酷电话面试解析/tcpip.jpg">
+<meta property="og:image" content="https://www.ruoduan.top/2019/04/11/阿里优酷电话面试解析/CRP的6个步骤.webp">
+<meta property="og:image" content="https://www.ruoduan.top/2019/04/11/阿里优酷电话面试解析/cookies.png">
+<meta property="og:updated_time" content="2019-04-11T12:32:04.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里优酷电话面试[7连问]">
+<meta name="twitter:description" content="阿里优酷电话面试[7连问]先进行了一个简单的自我介绍，主要介绍了一下自己的工作经历和一些技术栈 1. 解释一下浏览器解析HTTP的过程 上来就放大招，这个题可深可浅，我整理了一下答案  一次完整的HTTP请求过程当我们在web浏览器的地址栏中输入： www.baidu.com，然后回车，到底发生了什么 过程概览　　1.对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址">
+<meta name="twitter:image" content="https://www.ruoduan.top/2019/04/11/阿里优酷电话面试解析/域名解析.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Ruoduan&#39;s Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-阿里优酷电话面试解析" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      阿里优酷电话面试[7连问]
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/04/11/阿里优酷电话面试解析/" class="article-date">
+	  <time datetime="2019-04-11T12:20:47.382Z" itemprop="datePublished">2019-04-11</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/《记》/">《记》</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="阿里优酷电话面试-7连问"><a href="#阿里优酷电话面试-7连问" class="headerlink" title="阿里优酷电话面试[7连问]"></a>阿里优酷电话面试[7连问]</h1><p>先进行了一个简单的自我介绍，主要介绍了一下自己的工作经历和一些技术栈</p>
+<h2 id="1-解释一下浏览器解析HTTP的过程"><a href="#1-解释一下浏览器解析HTTP的过程" class="headerlink" title="1. 解释一下浏览器解析HTTP的过程"></a>1. 解释一下浏览器解析HTTP的过程</h2><blockquote>
+<p>上来就放大招，这个题可深可浅，我整理了一下答案</p>
+</blockquote>
+<h3 id="一次完整的HTTP请求过程"><a href="#一次完整的HTTP请求过程" class="headerlink" title="一次完整的HTTP请求过程"></a>一次完整的HTTP请求过程</h3><p>当我们在web浏览器的地址栏中输入： <a href="http://www.baidu.com，然后回车，到底发生了什么" target="_blank" rel="noopener">www.baidu.com，然后回车，到底发生了什么</a></p>
+<h4 id="过程概览"><a href="#过程概览" class="headerlink" title="过程概览"></a>过程概览</h4><p>　　1.对<a href="http://www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址" target="_blank" rel="noopener">www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址</a></p>
+<p>　　2.根据这个IP，找到对应的服务器，发起TCP的三次握手</p>
+<p>　　3.建立TCP连接后发起HTTP请求</p>
+<p>　　4.服务器响应HTTP请求，浏览器得到html代码</p>
+<p>　　5.浏览器解析html代码，并请求html代码中的资源（如js、css图片等）（先得到html代码，才能去找这些资源）</p>
+<p>　　6.浏览器对页面进行渲染呈现给用户</p>
+<p>注：</p>
+<ol>
+<li><p>DNS域名解析采用的是<strong>递归查询</strong>的方式，过程是，先去找DNS缓存-&gt;缓存找不到就去找根域名服务器-&gt;根域名又会去找下一级，这样递归查找之后，找到了，给我们的web浏览器</p>
+</li>
+<li><p>为什么HTTP协议要基于TCP来实现？  TCP是一个端到端的可靠的面相连接的协议，HTTP基于传输层TCP协议不用担心数据传输的各种问题（当发生错误时，会重传）</p>
+</li>
+<li><p>最后一步浏览器是如何对页面进行渲染的？  </p>
+<p>a: 解析html文件构成 DOM树，</p>
+<p>b: 解析CSS文件构成渲染树， </p>
+<p>c: 边解析，边渲染 ，  </p>
+<p>d:  JS 单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源的下载是没有必要的，所以JS是单线程，会阻塞后续资源下载</p>
+</li>
+</ol>
+<h2 id="下面我们来详细看看这几个过程的具体细节："><a href="#下面我们来详细看看这几个过程的具体细节：" class="headerlink" title="下面我们来详细看看这几个过程的具体细节："></a>下面我们来详细看看这几个过程的具体细节：</h2><h5 id="1-域名解析"><a href="#1-域名解析" class="headerlink" title="　　1.域名解析"></a>　　1.域名解析</h5><p>　　a）首先会搜索浏览器自身的DNS缓存（缓存时间比较短，大概只有1分钟，且只能容纳1000条缓存）</p>
+<p>　　b）如果浏览器自身的缓存里面没有找到，那么浏览器会搜索系统自身的DNS缓存</p>
+<p>　　c）如果还没有找到，那么尝试从 hosts文件里面去找</p>
+<p>　　d）在前面三个过程都没获取到的情况下，就递归地去域名服务器去查找，具体过程如下</p>
+<p><img src="/2019/04/11/阿里优酷电话面试解析/域名解析.png" alt="域名解析"></p>
+<h5 id="2-TCP连接（三次握手）"><a href="#2-TCP连接（三次握手）" class="headerlink" title="2.TCP连接（三次握手）"></a>2.TCP连接（三次握手）</h5><p>　　拿到域名对应的IP地址之后，User-Agent（一般指浏览器）会以一个随机端口（1024&lt;端口&lt;65535）向服务器的WEB程序（常用的有httpd，nginx）等的80端口。这个连接请求（原始的http请求经过TCP/IP4层模型的层层封包）到达服务器端后（这中间有各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别连接请求，解封包，一层一层的剥开），还有可能要经过Netfilter防火墙（属于内核的模块）的过滤，最终达到WEB程序，最终建立了TCP/IP的连接</p>
+<p><img src="/2019/04/11/阿里优酷电话面试解析/tcpip.jpg" alt="tcpip"></p>
+<h5 id="3-建立TCP连接之后，发起HTTP请求"><a href="#3-建立TCP连接之后，发起HTTP请求" class="headerlink" title="3.建立TCP连接之后，发起HTTP请求"></a>3.建立TCP连接之后，发起HTTP请求</h5><p>　　HTTP请求报文由三部分组成：请求行，请求头和请求正文</p>
+<p>　　请求行：用于描述客户端的请求方式，请求的资源名称以及使用的HTTP协议的版本号（例：GET/books/java.html HTTP/1.1）</p>
+<p>　　请求头：用于描述客户端请求哪台主机，以及客户端的一些环境信息等</p>
+<p>　　注：这里提一个请求头 Connection，<strong>Connection设置为 keep-alive</strong>用于说明 客户端这边设置的是，本次HTTP请求之后并不需要关闭TCP连接，这样可以使下次HTTP请求使用相同的TCP通道，节省TCP建立连接的时间</p>
+<p>　　请求正文：当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中（GET方式是保存在url地址后面，不会放到这里）</p>
+<h5 id="4-服务器端响应http请求，浏览器得到html代码"><a href="#4-服务器端响应http请求，浏览器得到html代码" class="headerlink" title="　　4.服务器端响应http请求，浏览器得到html代码"></a>　　4.服务器端响应http请求，浏览器得到html代码</h5><p>　　HTTP响应也由三部分组成：状态码，响应头和实体内容</p>
+<p>　　状态码：状态码用于表示服务器对请求的处理结果</p>
+<p>　　列举几种常见的：200（没有问题） 302（要你去找别人） 304（要你去拿缓存） 307（要你去拿缓存） 403（有这个资源，但是没有访问权限） 404（服务器没有这个资源） 500（服务器这边有问题）</p>
+<p>　　若干响应头：响应头用于描述服务器的基本信息，以及客户端如何处理数据</p>
+<p>　　实体内容：服务器返回给客户端的数据</p>
+<p>　　注：html资源文件应该不是通过 HTTP响应直接返回去的，应该是通过nginx通过io操作去拿到的吧</p>
+<h5 id="5-浏览器解析html代码，并请求html代码中的资源"><a href="#5-浏览器解析html代码，并请求html代码中的资源" class="headerlink" title="　　5.浏览器解析html代码，并请求html代码中的资源"></a>　　5.浏览器解析html代码，并请求html代码中的资源</h5><p>　　浏览器拿到html文件后，就开始解析其中的html代码，遇到js/css/image等静态资源时，就向服务器端去请求下载（会使用多线程下载，每个浏览器的线程数不一样），这是时候就用上 keep-alive特性了，建立一次HTTP连接，可以请求多个资源，下载资源的顺序就是按照代码里面的顺序，但是由于每个资源大小不一样，而浏览器又是多线程请求请求资源，所以这里显示的顺序并不一定是代码里面的顺序。</p>
+<h5 id="6-浏览器对页面进行渲染呈现给用户"><a href="#6-浏览器对页面进行渲染呈现给用户" class="headerlink" title="　　6.浏览器对页面进行渲染呈现给用户"></a>　　6.浏览器对页面进行渲染呈现给用户</h5><p>　　最后，浏览器利用自己内部的工作机制，把请求的静态资源和html代码进行渲染，渲染之后呈现给用户</p>
+<p> 　　浏览器是一个<strong>边解析边渲染</strong>的过程。首先浏览器<strong>解析HTML文件构建DOM树</strong>，然后<strong>解析CSS文件构建渲染树</strong>，等到渲染树构建完成后，浏览器开始布局渲染树并将其绘制到屏幕上。这个过程比较复杂，涉及到两个概念: reflow(回流)和repain(重绘)。DOM节点中的各个元素都是以盒模型的形式存在，这些都需要浏览器去计算其位置和大小等，这个过程称为relow;当盒模型的位置,大小以及其他属性，如颜色,字体,等确定下来之后，浏览器便开始绘制内容，这个过程称为repain。页面在首次加载时必然会经历reflow和repain。reflow和repain过程是非常消耗性能的，尤其是在移动设备上，它会破坏用户体验，有时会造成页面卡顿。所以我们应该尽可能少的减少reflow和repain。</p>
+<p>　　JS的解析是由浏览器中的JS解析引擎完成的。JS是单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源的下载是没有必要的，所以JS是单线程，会阻塞后续资源下载</p>
+<h5 id="自此一次完整的HTTP事务宣告完成"><a href="#自此一次完整的HTTP事务宣告完成" class="headerlink" title="　　自此一次完整的HTTP事务宣告完成."></a>　　自此一次完整的HTTP事务宣告完成.</h5><h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>　　<strong>域名解析 –&gt; 发起TCP的3次握手 –&gt; 建立TCP连接后发起http请求 –&gt; 服务器响应http请求，浏览器得到html代码 –&gt; 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等） –&gt; 浏览器对页面进行渲染呈现给用户</strong></p>
+<blockquote>
+<p>ps： 反正我是凉了 一下子没想起来底层的东西，答非所问</p>
+</blockquote>
+<h3 id="2-页面在进行加载的过程中，做了那些事，link标签和scrript标签在加载的时候是同步的还是异步的"><a href="#2-页面在进行加载的过程中，做了那些事，link标签和scrript标签在加载的时候是同步的还是异步的" class="headerlink" title="2. 页面在进行加载的过程中，做了那些事，link标签和scrript标签在加载的时候是同步的还是异步的"></a>2. 页面在进行加载的过程中，做了那些事，link标签和scrript标签在加载的时候是同步的还是异步的</h3><p>   当一个浏览器接收到从服务器发来的html页面，在渲染并呈现到屏幕上之前，有很多步骤要做。浏览器渲染页面需要做的一系列行为被称作“关键渲染路径（Critical Rendering Path 简称CRP）”。</p>
+<p>   <code>CRP</code> 的知识对于如何提升网站性能是相当有用的。<code>CRP</code>有6个步骤：</p>
+<ol>
+<li>构建DOM树</li>
+<li>构建CSSOM树</li>
+<li>运行JavaScript</li>
+<li>创建渲染树</li>
+<li>生成布局</li>
+<li><p>绘制页面</p>
+<p><img src="/2019/04/11/阿里优酷电话面试解析/CRP的6个步骤.webp" alt="CRP的6个步骤"></p>
+<blockquote>
+<p>具体步骤 请 移驾 <a href="https://www.jianshu.com/p/e53141edca6d" target="_blank" rel="noopener">https://www.jianshu.com/p/e53141edca6d</a></p>
+</blockquote>
+</li>
+</ol>
+<h4 id="2-1追问那script-标签怎样才能实现异步呢？"><a href="#2-1追问那script-标签怎样才能实现异步呢？" class="headerlink" title="2. 1追问那script 标签怎样才能实现异步呢？"></a>2. 1追问那script 标签怎样才能实现异步呢？</h4><h4 id="敲黑板-重点："><a href="#敲黑板-重点：" class="headerlink" title="敲黑板 重点："></a>敲黑板 重点：</h4><p>1、把<code>&lt;script&gt;</code>标签放在<code>&lt;head&gt;</code>中意味着必须等到全部的js代码都下载解析和执行完成以后，才开始展现页面内容，为避免这个问题一般把js代码全部放在<code>&lt;body&gt;</code>元素内容后面</p>
+<p>2、<code>script</code>标签不带defer和async属性：同步模式，脚本获取和执行都是同步，页面会被阻塞，浏览器都会按照<code>&lt;script&gt;</code>元素在页面中出现的先后顺序对他们依次进行解析</p>
+<p>同步模式：又称阻塞模式，会阻止浏览器的后续执行，停止后续解析，只有当前加载完成才能进行下一步操作。</p>
+<p>3、async属性：html5的新属性，只适合用于外部脚本文件，异步模式</p>
+<p>　　通过createElement创建的script标签其属性async默认为true</p>
+<p>4、defer属性：异步模式，只适合外部脚本文件，会被延迟到整个页面都解析完毕后再运行，脚本加载不阻塞页面的解析，同时带有defer的脚本彼此之间，能保证其执行顺序</p>
+<p>补充：</p>
+<p><code>&lt;script&gt;</code>标签打开defer或async属性，脚本就会异步加载。渲染引擎遇到这一行命令，就会开始下载外部脚本，但不会等它下载和执行，而是直接执行后面的命令。</p>
+<p><code>defer</code>与<code>async</code>的区别是：<code>defer</code>要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），才会执行；<code>async</code>一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，<code>defer</code>是“渲染完再执行”，<code>async</code>是“下载完就执行”。另外，如果有多个<code>defer</code>脚本，会按照它们在页面出现的顺序加载，而多个<code>async</code>脚本是不能保证加载顺序的。</p>
+<h3 id="3-解释一下webpack的执行机制，和运行原理"><a href="#3-解释一下webpack的执行机制，和运行原理" class="headerlink" title="3. 解释一下webpack的执行机制，和运行原理"></a>3. 解释一下webpack的执行机制，和运行原理</h3><ul>
+<li><p>Entry: 入口, webpack执行构建的第一步将从Entry开始，可抽象成输入</p>
+</li>
+<li><p>Module: 模块，在webpcak中一切皆模块，一个模块对应一个文件。webpack会从配置的Entry开始递归找出所有依赖的模块。</p>
+</li>
+<li><p>Chunk: 代码块，一个Chunk由多个模块组合而成，用于代码合并于分割</p>
+</li>
+<li><p>Loader: 模块转换器，用于将模块的原内容按照需求转换成新内容。</p>
+</li>
+<li><p>Plugin: 扩展插件，在webpcak构建流程中的特定时机注入扩展逻辑，来改变构建结果或做我们想要的事情</p>
+</li>
+<li><p>Outout: 输出结果，再webpack经过一些列处理并得出最终想要的代码后输出结果</p>
+</li>
+</ul>
+<blockquote>
+<p>webpcak在启动后会从Entry里配置的Module开始，递归解析Entry依赖的所有Module.每找到一个Module,就会根据配置的Loader去找出对应的转换规则，对Module进行转换后，再解析出当前Module依赖的Module。这些模块会以Entry为单位进行分组，一个Entry及其所有依赖的Module被分到一个组也就是一个Chunk.最后，webpack会将所有Chunk转换成文件输出。在整个流程中，webpack会在恰当的时机执行Plugin里定义的逻辑。</p>
+</blockquote>
+<p>细则 ： 移驾 webpack 官网： <a href="https://webpack.docschina.org/" target="_blank" rel="noopener">https://webpack.docschina.org/</a></p>
+<h3 id="4-本地储存localStorage，sessionStorage，cookies，他们有什么区别？"><a href="#4-本地储存localStorage，sessionStorage，cookies，他们有什么区别？" class="headerlink" title="4. 本地储存localStorage，sessionStorage，cookies，他们有什么区别？"></a>4. 本地储存localStorage，sessionStorage，cookies，他们有什么区别？</h3><p><img src="/2019/04/11/阿里优酷电话面试解析/cookies.png" alt="cookies"></p>
+<blockquote>
+<p>详情： <a href="https://www.cnblogs.com/pengc/p/8714475.html" target="_blank" rel="noopener">https://www.cnblogs.com/pengc/p/8714475.html</a></p>
+</blockquote>
+<h3 id="5-自身的一个项目，分析一下为什么要用a库而不用b库，是居于什么样的？"><a href="#5-自身的一个项目，分析一下为什么要用a库而不用b库，是居于什么样的？" class="headerlink" title="5. 自身的一个项目，分析一下为什么要用a库而不用b库，是居于什么样的？"></a>5. 自身的一个项目，分析一下为什么要用a库而不用b库，是居于什么样的？</h3><blockquote>
+<p>讲一讲个人的一些看法，没什么特点就是聊聊，应该是摸摸你的底，经验什么的</p>
+</blockquote>
+<p>​    </p>
+<h3 id="6-问了一下我学Typescript的初衷，和学到什么程度"><a href="#6-问了一下我学Typescript的初衷，和学到什么程度" class="headerlink" title="6. 问了一下我学Typescript的初衷，和学到什么程度"></a>6. 问了一下我学Typescript的初衷，和学到什么程度</h3><blockquote>
+<p>讲了一下，我为何学Typescript，和他的趋势，个人看法，这是一个知识帖就不做详细介绍了</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/wechatImage.jpg',
+  alipayImage: '/css/images/alipayImage.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Ruoduan
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2019/04/11/阿里优酷电话面试解析/" target="_blank" title="阿里优酷电话面试[7连问]">https://www.ruoduan.top/2019/04/11/阿里优酷电话面试解析/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/17/websocket/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">websocket</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阿里优酷电话面试-7连问"><span class="nav-number">1.</span> <span class="nav-text">阿里优酷电话面试[7连问]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-解释一下浏览器解析HTTP的过程"><span class="nav-number">1.1.</span> <span class="nav-text">1. 解释一下浏览器解析HTTP的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一次完整的HTTP请求过程"><span class="nav-number">1.1.1.</span> <span class="nav-text">一次完整的HTTP请求过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#过程概览"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">过程概览</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面我们来详细看看这几个过程的具体细节："><span class="nav-number">1.2.</span> <span class="nav-text">下面我们来详细看看这几个过程的具体细节：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-域名解析"><span class="nav-number">1.2.0.0.1.</span> <span class="nav-text">　　1.域名解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-TCP连接（三次握手）"><span class="nav-number">1.2.0.0.2.</span> <span class="nav-text">2.TCP连接（三次握手）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-建立TCP连接之后，发起HTTP请求"><span class="nav-number">1.2.0.0.3.</span> <span class="nav-text">3.建立TCP连接之后，发起HTTP请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-服务器端响应http请求，浏览器得到html代码"><span class="nav-number">1.2.0.0.4.</span> <span class="nav-text">　　4.服务器端响应http请求，浏览器得到html代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-浏览器解析html代码，并请求html代码中的资源"><span class="nav-number">1.2.0.0.5.</span> <span class="nav-text">　　5.浏览器解析html代码，并请求html代码中的资源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-浏览器对页面进行渲染呈现给用户"><span class="nav-number">1.2.0.0.6.</span> <span class="nav-text">　　6.浏览器对页面进行渲染呈现给用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自此一次完整的HTTP事务宣告完成"><span class="nav-number">1.2.0.0.7.</span> <span class="nav-text">　　自此一次完整的HTTP事务宣告完成.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">1.2.0.1.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-页面在进行加载的过程中，做了那些事，link标签和scrript标签在加载的时候是同步的还是异步的"><span class="nav-number">1.2.1.</span> <span class="nav-text">2. 页面在进行加载的过程中，做了那些事，link标签和scrript标签在加载的时候是同步的还是异步的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1追问那script-标签怎样才能实现异步呢？"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2. 1追问那script 标签怎样才能实现异步呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#敲黑板-重点："><span class="nav-number">1.2.1.2.</span> <span class="nav-text">敲黑板 重点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-解释一下webpack的执行机制，和运行原理"><span class="nav-number">1.2.2.</span> <span class="nav-text">3. 解释一下webpack的执行机制，和运行原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-本地储存localStorage，sessionStorage，cookies，他们有什么区别？"><span class="nav-number">1.2.3.</span> <span class="nav-text">4. 本地储存localStorage，sessionStorage，cookies，他们有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-自身的一个项目，分析一下为什么要用a库而不用b库，是居于什么样的？"><span class="nav-number">1.2.4.</span> <span class="nav-text">5. 自身的一个项目，分析一下为什么要用a库而不用b库，是居于什么样的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-问了一下我学Typescript的初衷，和学到什么程度"><span class="nav-number">1.2.5.</span> <span class="nav-text">6. 问了一下我学Typescript的初衷，和学到什么程度</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> 本网站作品部分来自于网络，感谢开源社区的诸多开发者 <a href="https://github.com/Chad97" target="_blank">My_Github</a> and <a href="mailto:chad97@1126.com" target="_blank">My_E-mail</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Ruoduan&#39;s Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+  
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Ruoduan&#39;s Blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Ruoduan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+
+  <!-- 鼠标点击动画 -->
+{% if theme.fireworks %}
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+{% endif %}
+
+<!-- canvas背景动画 -->
+{% if theme.canvas_nest %}
+<script type="text/javascript"
+color="128,0,128" opacity='0.6' zIndex="0" count="90" src="/js/bj.js"></script>
+{% endif %}
+
+<!-- 背景音乐 -->
+{% if theme.Background_music %}
+<audio src="http://fs.open.kugou.com/b2015b9b72e21ec48e28c9108f40b629/5c5d815f/G091/M07/0D/19/-4YBAFtrpFKAc_PVAC2_BWfzkSY923.mp3" autoplay ></audio>
+<!-- <script>
+  document.addEventListener('touchstart', function() {
+                let flag = true
+                if (flag) {
+                  document.getElementById('audios').play()
+                  flag = false
+                }
+            })
+</script> -->
+{% endif %}
+
+</body>
+</html>
