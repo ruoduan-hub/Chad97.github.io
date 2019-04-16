@@ -3,30 +3,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>vue-why-components-data-must-be-a-function | Ruoduan&#39;s Blog</title>
+  <title>react-router嵌套路由传值(render和children) | Ruoduan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="VUE">
+  <meta name="keywords" content="《React》">
   
   
   
   
-  <meta name="description" content="###话不多说上代码测试： 定义一个全局组件，绑定msg 我们首先看如果把data的值外传不在组件里面创建的效果  12345678910111213141516171819202122232425262728293031323334353637&amp;lt;body&amp;gt;  &amp;lt;div id=&quot;app&quot;&amp;gt;    &amp;lt;counter&amp;gt;&amp;lt;/counter&amp;gt;    &amp;lt;">
-<meta name="keywords" content="VUE">
+  <meta name="description" content="小栗子：例如：我们的路由格式如下: 123456789101112131415161718192021222324252627282930let router = [    &amp;#123;        path: &apos;/&apos;,        component: Rhome,        exact: true,    &amp;#125;,    &amp;#123;        path: &apos;/user&apos;,">
+<meta name="keywords" content="《React》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VUE-why-components-data-must-be-a-function">
-<meta property="og:url" content="https://www.ruoduan.top/2018/11/15/VUE-components-data/index.html">
+<meta property="og:title" content="React-router嵌套路由传值(render和children)">
+<meta property="og:url" content="https://www.ruoduan.top/2019/04/16/React-router嵌套路由传值-render和children/index.html">
 <meta property="og:site_name" content="Ruoduan&#39;s Blog">
-<meta property="og:description" content="###话不多说上代码测试： 定义一个全局组件，绑定msg 我们首先看如果把data的值外传不在组件里面创建的效果  12345678910111213141516171819202122232425262728293031323334353637&amp;lt;body&amp;gt;  &amp;lt;div id=&quot;app&quot;&amp;gt;    &amp;lt;counter&amp;gt;&amp;lt;/counter&amp;gt;    &amp;lt;">
+<meta property="og:description" content="小栗子：例如：我们的路由格式如下: 123456789101112131415161718192021222324252627282930let router = [    &amp;#123;        path: &apos;/&apos;,        component: Rhome,        exact: true,    &amp;#125;,    &amp;#123;        path: &apos;/user&apos;,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.ruoduan.top/2018/11/15/VUE-components-data/data1.gif">
-<meta property="og:image" content="https://www.ruoduan.top/2018/11/15/VUE-components-data/data2.gif">
-<meta property="og:image" content="https://www.ruoduan.top/2018/11/15/VUE-components-data/22.png">
-<meta property="og:updated_time" content="2019-02-03T06:48:57.269Z">
+<meta property="og:updated_time" content="2019-04-16T10:53:18.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VUE-why-components-data-must-be-a-function">
-<meta name="twitter:description" content="###话不多说上代码测试： 定义一个全局组件，绑定msg 我们首先看如果把data的值外传不在组件里面创建的效果  12345678910111213141516171819202122232425262728293031323334353637&amp;lt;body&amp;gt;  &amp;lt;div id=&quot;app&quot;&amp;gt;    &amp;lt;counter&amp;gt;&amp;lt;/counter&amp;gt;    &amp;lt;">
-<meta name="twitter:image" content="https://www.ruoduan.top/2018/11/15/VUE-components-data/data1.gif">
+<meta name="twitter:title" content="React-router嵌套路由传值(render和children)">
+<meta name="twitter:description" content="小栗子：例如：我们的路由格式如下: 123456789101112131415161718192021222324252627282930let router = [    &amp;#123;        path: &apos;/&apos;,        component: Rhome,        exact: true,    &amp;#125;,    &amp;#123;        path: &apos;/user&apos;,">
   
     <link rel="alternate" href="/atom.xml" title="Ruoduan&#39;s Blog" type="application/atom+xml">
   
@@ -180,7 +176,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-VUE-components-data" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-React-router嵌套路由传值-render和children" style="width: 75%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -188,7 +184,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      VUE-why-components-data-must-be-a-function
+      React-router嵌套路由传值(render和children)
     </h1>
   
 
@@ -196,13 +192,11 @@
     
     <div class="article-meta">
       
-	<a href="/2018/11/15/VUE-components-data/" class="article-date">
-	  <time datetime="2018-11-15T07:06:59.670Z" itemprop="datePublished">2018-11-15</time>
+	<a href="/2019/04/16/React-router嵌套路由传值-render和children/" class="article-date">
+	  <time datetime="2019-04-16T10:51:54.000Z" itemprop="datePublished">2019-04-16</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/《VUE》/">《VUE》</a>
-
       
 	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
@@ -215,22 +209,28 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###<strong>话不多说上代码测试：</strong></p>
-<h4 id="定义一个全局组件，绑定msg"><a href="#定义一个全局组件，绑定msg" class="headerlink" title="定义一个全局组件，绑定msg"></a><strong>定义一个全局组件，绑定msg</strong></h4><ul>
-<li>我们首先看如果把data的值外传不在组件里面创建的效果</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"temp"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"加一"</span> @<span class="attr">click</span>=<span class="string">'increment'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123;count&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> dataObj=&#123;<span class="attr">count</span>:<span class="number">0</span>&#125;</span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">'counter'</span>,&#123;</span></span><br><span class="line"><span class="javascript">      template:<span class="string">'#temp'</span>,</span></span><br><span class="line"><span class="javascript">      data:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">      	<span class="keyword">return</span> dataObj</span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">      methods:&#123;</span></span><br><span class="line"><span class="undefined">        increment() &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">this</span>.count++</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> vm=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">      el:<span class="string">'#app'</span>,</span></span><br><span class="line"><span class="undefined">      data:&#123;&#125;,</span></span><br><span class="line"><span class="undefined">      methods:&#123;&#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>.GIF</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/15/VUE-components-data/data1.gif" alt="外传对象"></p>
+        <h2 id="小栗子："><a href="#小栗子：" class="headerlink" title="小栗子："></a>小栗子：</h2><p>例如：<br>我们的路由格式如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> router = [</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        component: Rhome,</span><br><span class="line">        exact: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/user'</span>,</span><br><span class="line">        component: User,</span><br><span class="line">        routes: [ <span class="comment">//嵌套路由</span></span><br><span class="line">            &#123;   </span><br><span class="line">                type: Route,</span><br><span class="line">                path: <span class="string">'/user/'</span>,</span><br><span class="line">                component: Main</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                type: Route,</span><br><span class="line">                path: <span class="string">'/user/info/'</span>,</span><br><span class="line">                component: UserInfo</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/shop'</span>,</span><br><span class="line">        component: Shop,</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        path: <span class="string">'/news'</span>,</span><br><span class="line">        component: NewsInfo,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <ul>
-<li>现在把dataObj注释， return {count:0}</li>
+<li><p>我们想在 渲染 通过组件传值的方式父组件吧子组件的路由传过去从而实现渲染，传统的父子组件传值是用不了的</p>
+<ul>
+<li><h4 id="错误示范："><a href="#错误示范：" class="headerlink" title="错误示范："></a>错误示范：</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">childRoutes</span>=<span class="string">&#123;val.routes&#125;</span>   /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="正确示范："><a href="#正确示范：" class="headerlink" title="正确示范："></a>正确示范：</h4></li>
+<li><strong>传值：</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">                 &lt;Route exact key=&#123;key&#125; path=&#123;route.path&#125;</span><br><span class="line">                 render = &#123;props =&gt; (</span><br><span class="line">                   &lt;route.component &#123; ...props &#125; routes = &#123;route.routes&#125; /&gt;</span><br><span class="line">                 )&#125;</span><br><span class="line">               /&gt;</span><br><span class="line">                 )</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var dataObj=&#123;count:0&#125;</span></span><br><span class="line">    Vue.component(<span class="string">'counter'</span>,&#123;</span><br><span class="line">      template:<span class="string">'#temp'</span>,</span><br><span class="line">      data:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="attr">count</span>:<span class="number">0</span>&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods:&#123;</span><br><span class="line">        increment() &#123;</span><br><span class="line">          <span class="keyword">this</span>.count++</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-<p>​            <img src="/2018/11/15/VUE-components-data/data2.gif" alt="改正后"></p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><h4 id="官网解释比较抽象："><a href="#官网解释比较抽象：" class="headerlink" title="官网解释比较抽象："></a>官网解释比较抽象：</h4><p>​            <img src="/2018/11/15/VUE-components-data/22.png" alt="3后"></p>
-<blockquote>
-<p>不难看出，这里的关键点就在于  return {} 这个地方 如果是作用域外传入对象的话，上面三个组件的click方法都是处理的这个外部对象里面的count，所以他们作用于同样一个变量，但是如果是 return {count : 0}的话是写在template 内部的，所以每当你在page上渲染一个组件就会响应的创建一个count ，所以他们互不干预，在事件使用中我们可以根据这个小小的点实现不同需求的功能而省去多余的代码</p>
-</blockquote>
-
+<p><strong>接收：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.props.childrenRoute.map(</span><br><span class="line">                               (route, key) =&gt;</span><br><span class="line">                               <span class="tag">&lt;<span class="name">Route</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&#123;route.path&#125;</span> <span class="attr">component</span>=<span class="string">&#123;route.component&#125;</span> /&gt;</span></span><br><span class="line">                           )</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="阐述："><a href="#阐述：" class="headerlink" title="阐述："></a>阐述：</h3><ul>
+<li>编程式导航，可以在一个组件中用this.props.history.push(“/path”,{name:”hellow”})，来进行传参，传过去的值在props.location.state中</li>
+<li>Route里面还有两个属性，render和children<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">-render是一个函数，语法：render=&#123;()=&gt;&#123;<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;&#125;，只要你的路由匹配了，这个函数才会执行</span><br><span class="line">-children也是一个函数，不管匹配不匹配，这个函数都会执行</span><br><span class="line">-他们两个有个优先级关系，render的优先级总是高于children，是会覆盖children的</span><br><span class="line"></span><br><span class="line"> &lt;Fragment&gt;</span><br><span class="line">    &lt;h1&gt;header&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;Link to="/</span>wiki/wikiList/<span class="string">"&gt;gogogo&lt;/Link&gt;</span></span><br><span class="line"><span class="string">    &lt;Route</span></span><br><span class="line"><span class="string">        path="</span>/wiki/wikiList<span class="string">"</span></span><br><span class="line"><span class="string">        render=&#123;</span></span><br><span class="line"><span class="string">            ()=&gt;&#123;</span></span><br><span class="line"><span class="string">                return &lt;div&gt;wikilist-children&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125; //这个是只有当你路由匹配到了/wiki/wikiList才会执行</span></span><br><span class="line"><span class="string">        // children=&#123;() =&gt; &#123;</span></span><br><span class="line"><span class="string">        //     return &lt;div&gt;wikilist-children&lt;/div&gt;</span></span><br><span class="line"><span class="string">        //   &#125;</span></span><br><span class="line"><span class="string">        // &#125;    //这个是只要你的路由跳到wiki了，那children就会执行</span></span><br><span class="line"><span class="string">    &gt;    </span></span><br><span class="line"><span class="string">    &lt;/Route&gt;</span></span><br><span class="line"><span class="string">&lt;/Fragment&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br><br><br></p>
+<h2 id="完"><a href="#完" class="headerlink" title="完"></a>完</h2>
       
     </div>
     <footer class="article-footer">
@@ -256,7 +256,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2018/11/15/VUE-components-data/" target="_blank" title="VUE-why-components-data-must-be-a-function">https://www.ruoduan.top/2018/11/15/VUE-components-data/</a>
+          <a href="/2019/04/16/React-router嵌套路由传值-render和children/" target="_blank" title="React-router嵌套路由传值(render和children)">https://www.ruoduan.top/2019/04/16/React-router嵌套路由传值-render和children/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -302,19 +302,10 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2018/11/26/JavaScript原型，原型链，继承/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          JavaScript原型，原型链，继承
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/09/Hello-User/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/11/阿里优酷电话面试解析/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Hello-User</div>
+      <div class="article-nav-title">阿里优酷电话面试[7连问]</div>
     </a>
   
 </nav>
@@ -328,9 +319,9 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义一个全局组件，绑定msg"><span class="nav-number">1.</span> <span class="nav-text">定义一个全局组件，绑定msg</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number"></span> <span class="nav-text">总结：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网解释比较抽象："><span class="nav-number">1.</span> <span class="nav-text">官网解释比较抽象：</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小栗子："><span class="nav-number">1.</span> <span class="nav-text">小栗子：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#错误示范："><span class="nav-number">1.0.1.</span> <span class="nav-text">错误示范：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正确示范："><span class="nav-number">1.0.2.</span> <span class="nav-text">正确示范：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阐述："><span class="nav-number">1.1.</span> <span class="nav-text">阐述：</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#完"><span class="nav-number">2.</span> <span class="nav-text">完</span></a></li>
     
-    </li></div>
+    </div>
   </aside>
 
 </section>
